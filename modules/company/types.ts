@@ -1,5 +1,5 @@
-import { Address } from "../address/types";
-import { EntityStatus } from "../common/types";
+import { Address } from "@/modules/address/types";
+import { EntityStatus } from "@/modules/common/types";
 
 export enum CompanyType {
   EVENT_ORGANIZER = "event_organizer",
@@ -16,14 +16,13 @@ export interface CompanySettings {
 export interface Company {
   id: string;
   name: string;
-  description?: string;
-  logo?: string;
-  website?: string;
+  type: CompanyType;
+  contactName?: string;
   contactEmail: string;
   contactPhone?: string;
+  description?: string;
   address: Address;
-  type: CompanyType;
-  comissionRate: number;
+  commissionRate: number;
   settings: CompanySettings;
   entityStatus: EntityStatus;
   createdAt: string;

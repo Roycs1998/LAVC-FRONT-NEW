@@ -1,15 +1,17 @@
 import { NextRequest } from "next/server";
 import { backendClient } from "@/app/api/_core/backend";
-import { created } from "@/app/api/_core/response";
 import { errorResponse } from "@/app/api/_core/errors";
+import { ok } from "@/app/api/_core/response";
 
-export async function POST(req: NextRequest) {
+export async function PATCH(
+  req: NextRequest,
+  { params }: { params: { id: string } }
+) {
   try {
     const body = await req.json();
-
     const client = backendClient(req);
-    const { data } = await client.post(`/auth/register`, body);
-    return created(data);
+    const { data } = await client.patch(`/companies/${params.id}/status`, body);
+    return ok(data);
   } catch (err) {
     return errorResponse(err);
   }
