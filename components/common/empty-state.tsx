@@ -20,7 +20,7 @@ export function EmptyState({
   return (
     <div className="rounded-lg border p-10 text-center space-y-3">
       <div className="mx-auto w-10 h-10 flex items-center justify-center">
-        {icon ?? <span className="text-2xl">🗂️</span>}
+        {icon}
       </div>
       <h3 className="text-lg font-semibold">{title}</h3>
       <p className="text-muted-foreground">{description}</p>

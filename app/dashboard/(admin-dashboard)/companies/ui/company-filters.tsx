@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { RotateCcw, Search } from "lucide-react";
-import { FormItem, FormLabel } from "@/components/ui/form";
+import { CompanyTypeLabels } from "@/modules/company/contants";
 
 const ALL = "all";
 
@@ -45,8 +45,8 @@ export function CompanyFilters() {
   };
 
   return (
-    <div className="flex flex-col md:flex-row gap-2 md:items-end">
-      <div className="relative flex-1 max-w-sm">
+    <div className="flex flex-col xl:flex-row justify-between gap-2">
+      <div className="relative w-full xl:max-w-xs">
         <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
         <Input
           placeholder="Buscar empresas..."
@@ -56,33 +56,35 @@ export function CompanyFilters() {
         />
       </div>
 
-      <Select value={status} onValueChange={setStatus}>
-        <SelectTrigger className="w-36">
-          <SelectValue placeholder="Todo el estado" />
-        </SelectTrigger>
-        <SelectContent>
-          <SelectItem value={ALL}>Todo el estado</SelectItem>
-          <SelectItem value="active">Activo</SelectItem>
-          <SelectItem value="inactive">Inactivo</SelectItem>
-        </SelectContent>
-      </Select>
+      <div className="grid grid-cols-2 md:flex md:items-end md:justify-end gap-2">
+        <Select value={status} onValueChange={setStatus}>
+          <SelectTrigger className="w-full md:w-fit">
+            <SelectValue placeholder="Todo el estado" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value={ALL}>Todo el estado</SelectItem>
+            <SelectItem value="active">Activo</SelectItem>
+            <SelectItem value="inactive">Inactivo</SelectItem>
+          </SelectContent>
+        </Select>
 
-      <Select value={type} onValueChange={setType}>
-        <SelectTrigger>
-          <SelectValue placeholder="Todos" />
-        </SelectTrigger>
-        <SelectContent>
-          <SelectItem value={ALL}>Todos</SelectItem>
-          <SelectItem value="event_organizer">
-            Organizador de eventos
-          </SelectItem>
-          <SelectItem value="educational">Educativo</SelectItem>
-          <SelectItem value="corporate">Corporativo</SelectItem>
-        </SelectContent>
-      </Select>
+        <Select value={type} onValueChange={setType}>
+          <SelectTrigger className="w-full md:w-fit">
+            <SelectValue placeholder="Todos" />
+          </SelectTrigger>
 
-      <div className="flex gap-2">
+          <SelectContent>
+            <SelectItem value={ALL}>Todos</SelectItem>
+            {Object.entries(CompanyTypeLabels).map(([k, v]) => (
+              <SelectItem key={k} value={k}>
+                {v}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+
         <Button onClick={apply}>Aplicar</Button>
+
         <Button variant="outline" onClick={reset}>
           <RotateCcw className="h-4 w-4 mr-1" /> Reset
         </Button>

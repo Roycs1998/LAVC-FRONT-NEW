@@ -31,7 +31,8 @@ export function CompanyStatusDialog() {
   useEffect(() => {
     const handler = (e: any) => {
       setId(e.detail.id);
-      setOpen(true);
+      setStatus(() => e.detail.status);
+      setOpen(() => true);
     };
     window.addEventListener("open-company-status", handler as any);
     return () =>
@@ -65,8 +66,6 @@ export function CompanyStatusDialog() {
             <SelectContent>
               <SelectItem value="active">Activa</SelectItem>
               <SelectItem value="inactive">Inactiva</SelectItem>
-              <SelectItem value="pending">Pendiente</SelectItem>
-              <SelectItem value="deleted">Eliminada</SelectItem>
             </SelectContent>
           </Select>
         </div>

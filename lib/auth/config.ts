@@ -112,35 +112,34 @@ export const authOptions: NextAuthOptions = {
     error: "/login",
   },
   callbacks: {
-    async jwt({ token, user, account }) {
-      if (account && user) {
-        const extendedUser = user as any;
-        return {
-          ...token,
-          accessToken: extendedUser.accessToken,
-          role: extendedUser.role,
-          companyId: extendedUser.companyId,
-          emailVerified: extendedUser.emailVerified,
-          person: extendedUser.person,
-          company: extendedUser.company,
-        };
+    async jwt({ token, user }) {
+      if (user) {
+        const u = user as any;
+        token.accessToken = u.accessToken;
+        token.role = u.role;
+        token.companyId = u.companyId;
+        token.emailVerified = u.emailVerified;
+        token.person = u.person;
+        token.company = u.company;
       }
 
-      return token;
+      return token as JWT;
     },
 
     async session({ session, token }) {
-      const extendedToken = token as ExtendedJWT;
+      (session as any).accessToken = (token as any).accessToken;
 
       if (session.user) {
-        (session as ExtendedSession).user = {
-          id: token.sub!,
-          email: token.email!,
-          role: extendedToken.role,
-          companyId: extendedToken.companyId,
-          emailVerified: extendedToken.emailVerified,
-          person: extendedToken.person,
-          company: extendedToken.company,
+        session.user = {
+          ...session.user,
+          id: token.sub ?? "",
+          email: token.email ?? session.user.email,
+          role: (token as any).role,
+          companyId: (token as any).companyId,
+          emailVerified: (token as any).emailVerified,
+          person: (token as any).person,
+          company: (token as any).company,
+          accessToken: (token as any).accessToken,
         };
       }
 

@@ -12,13 +12,18 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { MoreHorizontal } from "lucide-react";
 import { CompaniesClient } from "@/modules/company/client";
+import { Company } from "@/modules/company";
 
-export function CompanyActions({ id }: { id: string }) {
+interface Props {
+  company: Company;
+}
+
+export function CompanyActions({ company }: Props) {
   const router = useRouter();
 
   const onDelete = async () => {
     try {
-      await CompaniesClient.remove(id);
+      await CompaniesClient.remove(company.id);
       toast.success("Empresa eliminada");
       router.refresh();
     } catch (e: any) {
@@ -26,10 +31,13 @@ export function CompanyActions({ id }: { id: string }) {
     }
   };
 
-  const onEdit = () => router.push(`/dashboard/companies/${id}`);
+  const onEdit = () => router.push(`/dashboard/companies/${company.id}/edit`);
+  const onView = () => router.push(`/dashboard/companies/${company.id}`);
 
   const onStatus = () => {
-    const ev = new CustomEvent("open-company-status", { detail: { id } });
+    const ev = new CustomEvent("open-company-status", {
+      detail: { id: company.id, status: company.entityStatus },
+    });
     window.dispatchEvent(ev);
   };
 
@@ -41,6 +49,7 @@ export function CompanyActions({ id }: { id: string }) {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
+        <DropdownMenuItem onClick={onView}>Ver</DropdownMenuItem>
         <DropdownMenuItem onClick={onEdit}>Editar</DropdownMenuItem>
         <DropdownMenuItem onClick={onStatus}>Cambiar estado</DropdownMenuItem>
         <DropdownMenuSeparator />

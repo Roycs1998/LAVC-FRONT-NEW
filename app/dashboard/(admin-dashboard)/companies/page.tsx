@@ -3,23 +3,28 @@ import { CompanyStatusDialog } from "./ui/company-status-dialog";
 import { CompanyFilters } from "./ui/company-filters";
 import { TableSkeleton } from "@/components/skeletons";
 import { CompanyTable } from "./ui/company-table";
-import { AppPagination } from "@/components/common/app-pagination";
 import { EmptyState } from "@/components/common/empty-state";
-import { CompanyFilters as Filter } from "@/modules/company";
-import { CompaniesClient } from "@/modules/company/client";
+import {
+  CompanyPaginatedResponse,
+  CompanyFilters as Filter,
+} from "@/modules/company";
 import { PageHeader } from "@/components/layout/page-header";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 import Link from "next/link";
+import { serverApi } from "@/lib/axios/server";
 
-export default async function CompaniesPage({
-  searchParams,
-}: {
+interface Props {
   searchParams: Promise<Filter>;
-}) {
-  const query = await searchParams;
+}
 
-  const data = await CompaniesClient.list(query);
+export default async function CompaniesPage({ searchParams }: Props) {
+  const api = await serverApi();
+  const params = await searchParams;
+
+  const { data } = await api.get<CompanyPaginatedResponse>("/companies", {
+    params,
+  });
 
   return (
     <div className="space-y-4">
@@ -40,18 +45,15 @@ export default async function CompaniesPage({
 
       <Suspense fallback={<TableSkeleton />}>
         {data.data?.length ? (
-          <>
-            <CompanyTable items={data.data} />
-            <AppPagination
-              currentPage={data.currentPage}
-              totalPages={data.totalPages}
-            />
-          </>
+          <CompanyTable
+            data={data.data}
+            currentPage={data.currentPage}
+            totalPages={data.totalPages}
+          />
         ) : (
           <EmptyState
             title="No hay empresas"
-            description="Crea tu primera empresa para comenzar."
-            actionLabel="Crear empresa"
+            description="Limpia los filtros o crea una empresa."
           />
         )}
       </Suspense>

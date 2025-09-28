@@ -3,6 +3,7 @@ import { Company } from "@/modules/company";
 import { ColumnDef } from "@tanstack/react-table";
 import { CompanyStatusBadge } from "../company-status-bagde";
 import { CompanyActions } from "../company-actions";
+import { CompanyTypeLabels } from "@/modules/company/contants";
 
 export const companiesColumns: ColumnDef<Company>[] = [
   {
@@ -13,7 +14,9 @@ export const companiesColumns: ColumnDef<Company>[] = [
   {
     accessorKey: "type",
     header: "Tipo",
-    cell: ({ row }) => <span className="capitalize">{row.original.type}</span>,
+    cell: ({ row }) => (
+      <span className="capitalize">{CompanyTypeLabels[row.original.type]}</span>
+    ),
   },
   {
     id: "contact",
@@ -42,7 +45,7 @@ export const companiesColumns: ColumnDef<Company>[] = [
     header: "",
     cell: ({ row }) => (
       <div className="text-right">
-        <CompanyActions id={row.original.id} />
+        <CompanyActions company={row.original} />
       </div>
     ),
   },
