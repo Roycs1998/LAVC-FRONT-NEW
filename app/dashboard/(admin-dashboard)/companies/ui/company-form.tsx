@@ -1,13 +1,16 @@
 "use client";
+
 import * as React from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
+import { Building2, Mail, Phone, MapPin, Percent, Info } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
+  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -24,6 +27,8 @@ import {
 } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
 import { Card, CardContent } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
+
 import {
   Company,
   companyCreateSchema,
@@ -33,6 +38,8 @@ import {
   UpdateCompanyRequest,
 } from "@/modules/company";
 import { CompaniesClient } from "@/modules/company/client";
+import { CompanyTypeLabels } from "@/modules/company/contants";
+import { useRouter } from "next/navigation";
 
 type Props = {
   mode: "create" | "edit";
@@ -41,6 +48,8 @@ type Props = {
 };
 
 export function CompanyForm({ mode, defaultValues, id }: Props) {
+  const route = useRouter();
+
   const schema = mode === "create" ? companyCreateSchema : companyUpdateSchema;
 
   const form = useForm<any>({
@@ -49,7 +58,6 @@ export function CompanyForm({ mode, defaultValues, id }: Props) {
       name: defaultValues?.name ?? "",
       type: (defaultValues?.type as any) ?? "corporate",
       description: defaultValues?.description ?? "",
-      contactName: defaultValues?.contactName ?? "",
       contactEmail: defaultValues?.contactEmail ?? "",
       contactPhone: defaultValues?.contactPhone ?? "",
       address: {
@@ -66,20 +74,25 @@ export function CompanyForm({ mode, defaultValues, id }: Props) {
         maxEventsPerMonth: defaultValues?.settings?.maxEventsPerMonth ?? 0,
       },
     },
+    mode: "onBlur",
   });
 
   const type = useWatch({ control: form.control, name: "type" });
   const isSponsor = type === "sponsor";
+  const canCreateEvents = useWatch({
+    control: form.control,
+    name: "settings.canCreateEvents",
+  });
 
   const onSubmit = async (values: any) => {
     try {
       if (mode === "create") {
         await CompaniesClient.create(values as CreateCompanyRequest);
-        toast.success("Empresa creada");
-        window.location.assign("/dashboard/(admin)/companies");
+        toast.success("Empresa creada correctamente");
+        route.push("/dashboard/companies");
       } else if (id) {
         await CompaniesClient.update(id, values as UpdateCompanyRequest);
-        toast.success("Empresa actualizada");
+        toast.success("Cambios guardados");
       }
     } catch (e: any) {
       toast.error(e?.response?.data?.message || "No se pudo guardar");
@@ -88,9 +101,13 @@ export function CompanyForm({ mode, defaultValues, id }: Props) {
 
   return (
     <Form {...form}>
-      <form className="space-y-6" onSubmit={form.handleSubmit(onSubmit)}>
-        <Card>
-          <CardContent className="pt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+        <Section
+          title="Identidad de la empresa"
+          description="Define el nombre público, tipo y una breve descripción para contextualizar su actividad."
+          icon={<Building2 className="h-5 w-5" />}
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <FormField
               control={form.control}
               name="name"
@@ -106,6 +123,7 @@ export function CompanyForm({ mode, defaultValues, id }: Props) {
                 </FormItem>
               )}
             />
+
             <FormField
               control={form.control}
               name="type"
@@ -116,14 +134,14 @@ export function CompanyForm({ mode, defaultValues, id }: Props) {
                   </FormLabel>
                   <Select value={field.value} onValueChange={field.onChange}>
                     <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Selecciona" />
+                      <SelectTrigger className="w-full">
+                        <SelectValue placeholder="Selecciona un tipo" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
                       {companyTypeEnum.options.map((t) => (
                         <SelectItem key={t} value={t}>
-                          {t}
+                          {CompanyTypeLabels[t] ?? t}
                         </SelectItem>
                       ))}
                     </SelectContent>
@@ -132,6 +150,7 @@ export function CompanyForm({ mode, defaultValues, id }: Props) {
                 </FormItem>
               )}
             />
+
             <FormField
               control={form.control}
               name="description"
@@ -141,40 +160,42 @@ export function CompanyForm({ mode, defaultValues, id }: Props) {
                   <FormControl>
                     <Textarea
                       rows={3}
-                      placeholder="Breve resumen..."
+                      placeholder="Describe brevemente la empresa y su propósito…"
                       {...field}
                     />
                   </FormControl>
+                  <FormDescription>
+                    Máximo 300–400 caracteres. Útil para perfiles y listados.
+                  </FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
             />
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardContent className="pt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-            <FormField
-              control={form.control}
-              name="contactName"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Contacto</FormLabel>
-                  <FormControl>
-                    <Input {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+          </div>
+        </Section>
+        <Section
+          title="Datos de contacto"
+          description="Información para comunicación."
+          icon={<Info className="h-5 w-5" />}
+        >
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <FormField
               control={form.control}
               name="contactEmail"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email</FormLabel>
+                  <FormLabel>Correo</FormLabel>
                   <FormControl>
-                    <Input type="email" inputMode="email" {...field} />
+                    <div className="relative">
+                      <Mail className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
+                      <Input
+                        className="pl-8"
+                        type="email"
+                        inputMode="email"
+                        placeholder="empresa@dominio.com"
+                        {...field}
+                      />
+                    </div>
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -187,17 +208,28 @@ export function CompanyForm({ mode, defaultValues, id }: Props) {
                 <FormItem>
                   <FormLabel>Teléfono</FormLabel>
                   <FormControl>
-                    <Input inputMode="tel" placeholder="+51 ..." {...field} />
+                    <div className="relative">
+                      <Phone className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
+                      <Input
+                        className="pl-8"
+                        inputMode="tel"
+                        placeholder="+51 999 999 999"
+                        {...field}
+                      />
+                    </div>
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardContent className="pt-6 grid grid-cols-1 md:grid-cols-12 gap-4">
+          </div>
+        </Section>
+        <Section
+          title="Dirección fiscal / comercial"
+          description="Ubicación de referencia para facturación, envíos o perfil público."
+          icon={<MapPin className="h-5 w-5" />}
+        >
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
             <FormField
               control={form.control}
               name="address.street"
@@ -205,7 +237,7 @@ export function CompanyForm({ mode, defaultValues, id }: Props) {
                 <FormItem className="md:col-span-8">
                   <FormLabel>Calle</FormLabel>
                   <FormControl>
-                    <Input {...field} />
+                    <Input placeholder="Av. Siempre Viva 742" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -216,9 +248,9 @@ export function CompanyForm({ mode, defaultValues, id }: Props) {
               name="address.zipCode"
               render={({ field }) => (
                 <FormItem className="md:col-span-4">
-                  <FormLabel>ZIP</FormLabel>
+                  <FormLabel>Código postal</FormLabel>
                   <FormControl>
-                    <Input {...field} />
+                    <Input placeholder="00000" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -231,7 +263,7 @@ export function CompanyForm({ mode, defaultValues, id }: Props) {
                 <FormItem className="md:col-span-4">
                   <FormLabel>Ciudad</FormLabel>
                   <FormControl>
-                    <Input {...field} />
+                    <Input placeholder="Ciudad" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -242,9 +274,9 @@ export function CompanyForm({ mode, defaultValues, id }: Props) {
               name="address.state"
               render={({ field }) => (
                 <FormItem className="md:col-span-4">
-                  <FormLabel>Estado/Provincia</FormLabel>
+                  <FormLabel>Estado / Provincia</FormLabel>
                   <FormControl>
-                    <Input {...field} />
+                    <Input placeholder="Provincia" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -257,36 +289,20 @@ export function CompanyForm({ mode, defaultValues, id }: Props) {
                 <FormItem className="md:col-span-4">
                   <FormLabel>País</FormLabel>
                   <FormControl>
-                    <Input {...field} />
+                    <Input placeholder="Perú" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardContent className="pt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-            <FormField
-              control={form.control}
-              name="commissionRate"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Comisión (0..1)</FormLabel>
-                  <FormControl>
-                    <Input
-                      type="number"
-                      step="0.01"
-                      min={0}
-                      max={1}
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+          </div>
+        </Section>
+        <Section
+          title="Reglas y capacidades"
+          description="Controla la comisión y lo que la empresa puede hacer dentro de la plataforma."
+          icon={<Percent className="h-5 w-5" />}
+        >
+          <div className="grid gap-4">
             {!isSponsor && (
               <>
                 <FormField
@@ -294,7 +310,14 @@ export function CompanyForm({ mode, defaultValues, id }: Props) {
                   name="settings.canCreateEvents"
                   render={({ field }) => (
                     <FormItem className="flex items-center justify-between border rounded-lg p-3">
-                      <FormLabel className="m-0">Crear eventos</FormLabel>
+                      <div className="space-y-0.5">
+                        <FormLabel className="m-0">
+                          Permitir creación de eventos
+                        </FormLabel>
+                        <FormDescription>
+                          Habilita módulos de eventos, equipo y ventas.
+                        </FormDescription>
+                      </div>
                       <FormControl>
                         <Switch
                           checked={field.value}
@@ -309,22 +332,39 @@ export function CompanyForm({ mode, defaultValues, id }: Props) {
                   name="settings.maxEventsPerMonth"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Eventos/mes</FormLabel>
+                      <FormLabel>Eventos por mes</FormLabel>
                       <FormControl>
-                        <Input type="number" min={0} {...field} />
+                        <Input
+                          type="number"
+                          min={0}
+                          placeholder={canCreateEvents ? "p. ej. 10" : "—"}
+                          disabled={!canCreateEvents}
+                          {...field}
+                        />
                       </FormControl>
+                      <FormDescription>
+                        Límite para controlar carga operativa.
+                      </FormDescription>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
               </>
             )}
+
             <FormField
               control={form.control}
               name="settings.canUploadSpeakers"
               render={({ field }) => (
-                <FormItem className="flex items-center justify-between border rounded-lg p-3 md:col-span-3">
-                  <FormLabel className="m-0">Subir ponentes</FormLabel>
+                <FormItem className="flex items-center justify-between border rounded-lg p-3">
+                  <div className="space-y-0.5">
+                    <FormLabel className="m-0">
+                      Permitir subir ponentes
+                    </FormLabel>
+                    <FormDescription>
+                      Podrán gestionar perfiles de speakers para eventos.
+                    </FormDescription>
+                  </div>
                   <FormControl>
                     <Switch
                       checked={field.value}
@@ -334,32 +374,63 @@ export function CompanyForm({ mode, defaultValues, id }: Props) {
                 </FormItem>
               )}
             />
-            <FormField
-              control={form.control}
-              name="settings.notes"
-              render={({ field }) => (
-                <FormItem className="md:col-span-3">
-                  <FormLabel>Notas internas</FormLabel>
-                  <FormControl>
-                    <Textarea
-                      rows={3}
-                      placeholder="Notas o enlaces útiles..."
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </CardContent>
-        </Card>
-
-        <div className="flex justify-end gap-2">
-          <Button type="submit">
-            {mode === "create" ? "Crear empresa" : "Guardar cambios"}
-          </Button>
+          </div>
+        </Section>
+        <div className="h-20" /> {/* espacio para la barra sticky */}
+        {/* Barra de acciones sticky */}
+        <div className="fixed inset-x-0 bottom-0 bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-t">
+          <div className="mx-auto max-w-screen-xl px-4 py-3 flex flex-col sm:flex-row gap-3 items-center justify-between">
+            <div className="text-xs text-muted-foreground flex items-center gap-2">
+              <Info className="h-4 w-4" />
+              Revisa los datos antes de guardar. Puedes editar todo luego.
+            </div>
+            <div className="flex items-center gap-2">
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => history.back()}
+              >
+                Cancelar
+              </Button>
+              <Button type="submit">
+                {mode === "create" ? "Crear empresa" : "Guardar cambios"}
+              </Button>
+            </div>
+          </div>
         </div>
       </form>
     </Form>
+  );
+}
+
+function Section({
+  title,
+  description,
+  icon,
+  children,
+}: {
+  title: string;
+  description?: string;
+  icon?: React.ReactNode;
+  children: React.ReactNode;
+}) {
+  return (
+    <Card>
+      <CardContent className="p-6 space-y-5">
+        <div className="flex items-start gap-3">
+          {icon && <div className="mt-0.5 text-muted-foreground">{icon}</div>}
+          <div>
+            <h2 className="text-base font-semibold leading-none">{title}</h2>
+            {description && (
+              <p className="text-sm text-muted-foreground mt-1">
+                {description}
+              </p>
+            )}
+          </div>
+        </div>
+        <Separator />
+        {children}
+      </CardContent>
+    </Card>
   );
 }

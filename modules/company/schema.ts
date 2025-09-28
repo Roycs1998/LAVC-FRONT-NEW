@@ -7,9 +7,9 @@ export const companyTypeEnum = z.enum(CompanyType);
 
 export const addressSchema = z.object({
   street: z.string().optional(),
-  city: z.string().min(1, "La ciudad es requerida").optional(),
+  city: z.string().optional(),
   state: z.string().optional(),
-  country: z.string().min(1, "El país es requerido").optional(),
+  country: z.string().optional(),
   zipCode: z.string().optional(),
 });
 
@@ -23,8 +23,7 @@ export const companyCreateSchema = z.object({
   name: z.string().min(2, "Mínimo 2 caracteres"),
   type: companyTypeEnum,
   description: z.string().max(1000).optional(),
-  contactName: z.string().optional(),
-  contactEmail: z.email("Email inválido").optional(),
+  contactEmail: z.union([z.literal(""), z.email("Email inválido")]),
   contactPhone: z.string().optional(),
   address: addressSchema.partial().optional(),
   commissionRate: z.number().min(0).max(1).optional(),

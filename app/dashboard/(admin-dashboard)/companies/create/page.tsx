@@ -1,7 +1,6 @@
 "use client";
 
 import { CompanyForm } from "../ui/company-form";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function NewCompanyPage() {
   return (
@@ -12,14 +11,7 @@ export default function NewCompanyPage() {
           Completa los campos y crea tu empresa.
         </p>
       </div>
-      <Card>
-        <CardHeader>
-          <CardTitle>Registro</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <CompanyForm mode="create" />
-        </CardContent>
-      </Card>
+      <CompanyForm mode="create" />
     </div>
   );
 }

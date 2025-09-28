@@ -17,7 +17,7 @@ interface Props {
   company: Company;
 }
 
-export function CompanyOverview({ company }: Props) {
+export function CompanyTabOverview({ company }: Props) {
   return (
     <Card>
       <CardHeader>

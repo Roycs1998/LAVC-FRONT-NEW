@@ -6,7 +6,8 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, Edit } from "lucide-react";
 import { Company } from "@/modules/company";
-import { CompanyStatusBadge } from "./company-status-bagde";
+import { CompanyStatusBadge } from "../../ui/company-status-bagde";
+import { CompanyTypeLabels } from "@/modules/company/contants";
 
 interface Props {
   company: Company;
@@ -22,7 +23,7 @@ export function CompanyHeaderHero({ company }: Props) {
         <Button variant="ghost" size="sm" asChild>
           <Link href="/dashboard/companies">
             <ArrowLeft className="h-4 w-4 mr-2" />
-            Volver a Companies
+            Volver
           </Link>
         </Button>
       </div>
@@ -32,12 +33,15 @@ export function CompanyHeaderHero({ company }: Props) {
           <Avatar className="h-12 w-12">
             <AvatarFallback>{initials}</AvatarFallback>
           </Avatar>
-          <div>
-            <h1 className="text-2xl font-bold">{company.name}</h1>
+
+          <div className="flex flex-col gap-2">
+            <h1 className="text-2xl font-bold capitalize">{company.name}</h1>
+
             <div className="flex flex-wrap items-center gap-2">
               <CompanyStatusBadge status={company.entityStatus} />
+
               <Badge variant="outline" className="capitalize">
-                {company.type}
+                {CompanyTypeLabels[company.type] ?? ""}
               </Badge>
             </div>
           </div>
