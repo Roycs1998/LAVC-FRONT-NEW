@@ -1,23 +1,8 @@
 "use client";
 
-import {
-  Table,
-  TableHeader,
-  TableRow,
-  TableHead,
-  TableBody,
-  TableCell,
-} from "@/components/ui/table";
 import { Company } from "@/modules/company";
-import { CompanyStatusBadge } from "./company-status-bagde";
-import { CompanyActions } from "./company-actions";
-import {
-  getCoreRowModel,
-  SortingState,
-  useReactTable,
-} from "@tanstack/react-table";
-import { useState } from "react";
-import { companiesColumns } from "./table/columns";
+import { getCoreRowModel, useReactTable } from "@tanstack/react-table";
+import { companiesColumns } from "./columns";
 import DataTable from "@/components/common/data-table";
 
 interface Props {

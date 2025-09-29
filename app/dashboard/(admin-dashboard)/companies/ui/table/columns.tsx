@@ -2,7 +2,7 @@
 import { Company } from "@/modules/company";
 import { ColumnDef } from "@tanstack/react-table";
 import { CompanyStatusBadge } from "../company-status-bagde";
-import { CompanyActions } from "../company-actions";
+import { CompanyActions } from "./company-actions";
 import { CompanyTypeLabels } from "@/modules/company/contants";
 
 export const companiesColumns: ColumnDef<Company>[] = [

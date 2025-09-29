@@ -13,3 +13,9 @@ export interface Pagination<T> {
   hasNextPage: boolean;
   hasPreviousPage: boolean;
 }
+
+export enum Currency {
+  PEN = "PEN",
+  USD = "USD",
+  EUR = "EUR",
+}

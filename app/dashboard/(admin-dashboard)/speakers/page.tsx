@@ -1,17 +1,15 @@
 import { Suspense } from "react";
-import { CompanyFilters } from "./ui/table/company-filters";
 import { TableSkeleton } from "@/components/skeletons";
-import { CompanyTable } from "./ui/table/company-table";
 import { EmptyState } from "@/components/common/empty-state";
-import {
-  CompanyPaginatedResponse,
-  CompanyFilters as Filter,
-} from "@/modules/company";
 import { PageHeader } from "@/components/layout/page-header";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 import Link from "next/link";
 import { serverApi } from "@/lib/axios/server";
+import SpeakerTable from "./ui/table/speaker-table";
+import { SpeakerPaginatedResponse } from "@/modules/speaker/contract";
+import { SpeakerFilters } from "./ui/table/speaker-filters";
+import { SpeakerFilters as Filter } from "@/modules/speaker/contract";
 
 interface Props {
   searchParams: Promise<Filter>;
@@ -21,38 +19,38 @@ export default async function CompaniesPage({ searchParams }: Props) {
   const api = await serverApi();
   const params = await searchParams;
 
-  const { data } = await api.get<CompanyPaginatedResponse>("/companies", {
+  const { data } = await api.get<SpeakerPaginatedResponse>("/speakers", {
     params,
   });
 
   return (
     <div className="space-y-4">
       <PageHeader
-        title="Empresas"
-        subtitle=" Gestiona y supervisa todas las empresas de tu plataforma."
+        title="Exponentes"
+        subtitle=" Gestiona y supervisa todas los exponentes de tu plataforma."
         actions={
           <Button asChild>
-            <Link href="/dashboard/companies/create">
+            <Link href="/dashboard/speakers/create">
               <Plus className="h-4 w-4 mr-2" />
-              Añadir empresa
+              Añadir exponente
             </Link>
           </Button>
         }
       />
 
-      <CompanyFilters />
+      <SpeakerFilters />
 
       <Suspense fallback={<TableSkeleton />}>
         {data.data?.length ? (
-          <CompanyTable
+          <SpeakerTable
             data={data.data}
             currentPage={data.currentPage}
             totalPages={data.totalPages}
           />
         ) : (
           <EmptyState
-            title="No hay empresas"
-            description="Limpia los filtros o crea una empresa."
+            title="No hay exponentes"
+            description="Limpia los filtros o crea un exponente."
           />
         )}
       </Suspense>

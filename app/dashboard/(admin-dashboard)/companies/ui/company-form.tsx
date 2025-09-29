@@ -93,6 +93,7 @@ export function CompanyForm({ mode, defaultValues, id }: Props) {
       } else if (id) {
         await CompaniesClient.update(id, values as UpdateCompanyRequest);
         toast.success("Cambios guardados");
+        route.push(`/dashboard/companies/${id}`);
       }
     } catch (e: any) {
       toast.error(e?.response?.data?.message || "No se pudo guardar");
@@ -376,8 +377,8 @@ export function CompanyForm({ mode, defaultValues, id }: Props) {
             />
           </div>
         </Section>
-        <div className="h-20" /> {/* espacio para la barra sticky */}
-        {/* Barra de acciones sticky */}
+        <div className="h-20" />
+
         <div className="fixed inset-x-0 bottom-0 bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-t">
           <div className="mx-auto max-w-screen-xl px-4 py-3 flex flex-col sm:flex-row gap-3 items-center justify-between">
             <div className="text-xs text-muted-foreground flex items-center gap-2">

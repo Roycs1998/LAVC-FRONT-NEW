@@ -34,7 +34,7 @@ export default function CompanyDetailPageContent({ company }: Props) {
         </TabsContent>
 
         <TabsContent value="settings" className="space-y-6">
-          <CompanyTabSettings />
+          <CompanyTabSettings company={company} />
         </TabsContent>
       </Tabs>
     </div>

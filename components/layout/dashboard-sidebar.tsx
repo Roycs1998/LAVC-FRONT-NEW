@@ -51,10 +51,6 @@ import {
 import { UserRole } from "@/modules/user";
 import { useSession } from "next-auth/react";
 
-interface DashboardSidebarProps {
-  user: User;
-}
-
 export interface NavigationSubItem {
   title: string;
   url: string;
@@ -170,12 +166,6 @@ const getNavigationConfig = (role: UserRole): NavigationItem[] => {
           ],
         },
         {
-          title: "People",
-          url: "/dashboard/people",
-          icon: Users,
-          badge: null,
-        },
-        {
           title: "Analytics",
           url: "/dashboard/analytics",
           icon: BarChart3,
@@ -216,23 +206,33 @@ const getNavigationConfig = (role: UserRole): NavigationItem[] => {
           ],
         },
         {
-          title: "People",
-          url: "/dashboard/people",
+          title: "Exponentes",
+          url: "/dashboard/speakers",
           icon: Users,
           badge: null,
+          items: [
+            {
+              title: "Todas los exponentes",
+              url: "/dashboard/speakers",
+            },
+            {
+              title: "Crear exponente",
+              url: "/dashboard/speakers/create",
+            },
+          ],
         },
         {
-          title: "Companies",
+          title: "Empresas",
           url: "/dashboard/companies",
           icon: Building2,
           badge: null,
           items: [
             {
-              title: "All Companies",
+              title: "Todas las empresas",
               url: "/dashboard/companies",
             },
             {
-              title: "Create Company",
+              title: "Crear empresa",
               url: "/dashboard/companies/create",
             },
           ],

@@ -1,17 +1,5 @@
-import { Company } from "../company";
-
-type CompanyBasic = Pick<
-  Company,
-  "id" | "name" | "contactEmail" | "contactPhone"
->;
-
-export interface Person {
-  id: string;
-  firstName: string;
-  lastName: string;
-  phone?: string;
-  fullName: string;
-}
+import { ShortCompany } from "@/modules/company";
+import { Person } from "@/modules/person/types";
 
 export enum UserRole {
   PLATFORM_ADMIN = "platform_admin",
@@ -27,5 +15,5 @@ export interface User {
   companyId?: string;
   emailVerified: boolean;
   person: Person;
-  company?: CompanyBasic;
+  company?: ShortCompany;
 }

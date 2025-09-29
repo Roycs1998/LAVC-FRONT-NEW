@@ -6,7 +6,7 @@ interface Props {
   params: Promise<any>;
 }
 
-export default async function EditCompany({ params }: Props) {
+export default async function EditCompanyPage({ params }: Props) {
   const api = await serverApi();
   const { id } = await params;
 

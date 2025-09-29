@@ -27,3 +27,8 @@ export interface Company {
   entityStatus: EntityStatus;
   createdAt: string;
 }
+
+export type ShortCompany = Pick<
+  Company,
+  "id" | "name" | "contactEmail" | "contactPhone"
+>;
