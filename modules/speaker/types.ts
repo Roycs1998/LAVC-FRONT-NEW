@@ -32,3 +32,5 @@ export interface Speaker {
   entityStatus: EntityStatus;
   createdAt: Date;
 }
+
+export type ShortSpeaker = Pick<Speaker, "id" | "person">;

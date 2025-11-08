@@ -32,3 +32,4 @@ export type ShortCompany = Pick<
   Company,
   "id" | "name" | "contactEmail" | "contactPhone"
 >;
+3;
