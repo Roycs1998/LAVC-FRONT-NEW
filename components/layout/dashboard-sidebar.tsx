@@ -49,7 +49,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { UserRole } from "@/modules/user";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 
 export interface NavigationSubItem {
   title: string;
@@ -65,20 +65,23 @@ export interface NavigationItem {
   items?: NavigationSubItem[];
 }
 
-const getNavigationConfig = (role: UserRole): NavigationItem[] => {
-  const baseItems = [
-    {
-      title: "Dashboard",
-      url: "/dashboard",
-      icon: Home,
-      badge: null,
-    },
-  ];
+const getNavigationConfig = (roles: UserRole[]): NavigationItem[] => {
+  const items: NavigationItem[] = [];
 
-  switch (role) {
-    case "user":
-      return [
-        ...baseItems,
+  items.push(
+    ...[
+      {
+        title: "Dashboard",
+        url: "/dashboard",
+        icon: Home,
+        badge: null,
+      },
+    ]
+  );
+
+  if (roles.includes(UserRole.USER)) {
+    items.push(
+      ...[
         {
           title: "My Tickets",
           url: "/dashboard/my-tickets",
@@ -107,11 +110,13 @@ const getNavigationConfig = (role: UserRole): NavigationItem[] => {
             },
           ],
         },
-      ];
+      ]
+    );
+  }
 
-    case "staff":
-      return [
-        ...baseItems,
+  if (roles.includes(UserRole.STAFF)) {
+    items.push(
+      ...[
         {
           title: "QR Scanner",
           url: "/dashboard/scanner",
@@ -137,17 +142,35 @@ const getNavigationConfig = (role: UserRole): NavigationItem[] => {
           icon: Settings,
           badge: null,
         },
-      ];
+      ]
+    );
+  }
 
-    case "company_admin":
-      return [
-        ...baseItems,
+  if (roles.includes(UserRole.COMPANY_ADMIN)) {
+    items.push(
+      ...[
         {
           title: "QR Scanner",
           url: "/dashboard/scanner",
           icon: ScanLine,
           badge: null,
           highlight: true,
+        },
+        {
+          title: "Exponentes",
+          url: "/dashboard/speakers",
+          icon: Users,
+          badge: null,
+          items: [
+            {
+              title: "Todas los exponentes",
+              url: "/dashboard/speakers",
+            },
+            {
+              title: "Crear exponente",
+              url: "/dashboard/speakers/create",
+            },
+          ],
         },
         {
           title: "Events",
@@ -177,11 +200,13 @@ const getNavigationConfig = (role: UserRole): NavigationItem[] => {
           icon: Settings,
           badge: null,
         },
-      ];
+      ]
+    );
+  }
 
-    case "platform_admin":
-      return [
-        ...baseItems,
+  if (roles.includes(UserRole.PLATFORM_ADMIN)) {
+    items.push(
+      ...[
         {
           title: "QR Scanner",
           url: "/dashboard/scanner",
@@ -249,11 +274,11 @@ const getNavigationConfig = (role: UserRole): NavigationItem[] => {
           icon: Settings,
           badge: null,
         },
-      ];
-
-    default:
-      return baseItems;
+      ]
+    );
   }
+
+  return items;
 };
 
 export function DashboardSidebar() {
@@ -262,7 +287,7 @@ export function DashboardSidebar() {
 
   const { data } = useSession();
 
-  const userRole = (data?.user.role as UserRole) || UserRole.USER;
+  const userRole = (data?.user.roles as UserRole[]) || [UserRole.USER];
   const navigationItems = getNavigationConfig(userRole);
 
   const handleCommandSelect = (url: string) => {
@@ -338,8 +363,7 @@ export function DashboardSidebar() {
                     </Link>
                   </SidebarMenuButton>
 
-                  {/* Sub-items */}
-                  {item.items && (
+                  {item.items && isActive && (
                     <SidebarMenuSub>
                       {item.items.map((subItem) => (
                         <SidebarMenuSubItem key={subItem.title}>
@@ -382,13 +406,15 @@ export function DashboardSidebar() {
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-56">
               <DropdownMenuItem asChild>
-                <Link href="/dashboard/profile">Profile</Link>
+                <Link href="/dashboard/account">Profile</Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
-                <Link href="/dashboard/settings">Settings</Link>
+                <Link href="/dashboard/account/personal-info">Settings</Link>
               </DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>Sign out</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => signOut()}>
+                Sign out
+              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </SidebarFooter>

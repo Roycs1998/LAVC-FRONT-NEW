@@ -36,4 +36,4 @@ export interface CompanyFilters {
   city?: string;
 }
 
-export interface CompanyPaginatedResponse extends Pagination<Company> {}
+export type CompanyPaginatedResponse = Pagination<Company>;

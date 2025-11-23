@@ -8,6 +8,8 @@ import { EventsClient } from "@/modules/event/client";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 
+import dayjs from "dayjs";
+
 import {
   Form,
   FormField,
@@ -34,7 +36,12 @@ import {
   SelectItem,
   SelectValue,
 } from "@/components/ui/select";
-import { EventLocationType, EventType } from "@/modules/event";
+import { EventLocationType, EventType, EventTypeLabels } from "@/modules/event";
+import FormSection from "@/components/common/form-section";
+import { Clock, Info } from "lucide-react";
+import FormText from "@/components/common/form-text";
+import FormSelect from "@/components/common/form-select";
+import FormArea from "@/components/common/form-area";
 
 export function EventCreateForm({
   isPlatformAdmin,
@@ -55,9 +62,8 @@ export function EventCreateForm({
       description: "",
       shortDescription: "",
       type: EventType.CONFERENCE,
-      startDate: "",
-      endDate: "",
-      timezone: "America/Lima",
+      startDate: dayjs().toDate(),
+      endDate: dayjs().add(7, "day").toDate(),
       isAllDay: false,
       location: {
         type: EventLocationType.PHYSICAL,
@@ -106,178 +112,98 @@ export function EventCreateForm({
         className="flex flex-col gap-6"
         onSubmit={form.handleSubmit(onSubmit)}
       >
-        <Card>
-          <CardHeader>
-            <CardTitle>Información básica</CardTitle>
-            <CardDescription>Resumen general del evento.</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            {isPlatformAdmin && (
-              <FormField
-                control={form.control}
-                name="companyId"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Empresa (ID)</FormLabel>
-                    <FormControl>
-                      <Input placeholder="companyId" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+        <FormSection
+          title="Información básica"
+          description="Resumen general del evento."
+          icon={<Info className="h-5 w-5" />}
+        >
+          {isPlatformAdmin && (
+            <FormField
+              control={form.control}
+              name="companyId"
+              render={({ field }) => (
+                <FormItem className="md:col-span-2">
+                  <FormLabel>Empresa (ID)</FormLabel>
+                  <FormControl>
+                    <Input placeholder="companyId" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          )}
+
+          <FormText
+            control={form.control}
+            name="title"
+            label="Título"
+            placeholder="Nombre del evento"
+          />
+
+          <FormSelect
+            control={form.control}
+            name="type"
+            label="Tipo"
+            placeholder="Selecciona tipo"
+            data={Object.values(EventType).map((t) => ({
+              label: EventTypeLabels[t],
+              value: t,
+            }))}
+          />
+
+          <FormText
+            control={form.control}
+            name="shortDescription"
+            label="Descripción corta"
+            placeholder="Una frase clara y concisa…"
+            className="md:col-span-2"
+          />
+
+          <FormArea
+            control={form.control}
+            name="description"
+            label="Descripción"
+            placeholder="Detalles del evento, objetivos, público…"
+            className="md:col-span-2"
+          />
+        </FormSection>
+
+        <FormSection
+          title="Fecha y horario"
+          description="Configura el horario considerando tu zona horaria."
+          icon={<Clock className="h-5 w-5" />}
+        >
+          <FormText
+            control={form.control}
+            name="startDate"
+            label="Inicio"
+            type="datetime-local"
+          />
+          <FormText
+            control={form.control}
+            name="endDate"
+            label="Fin"
+            type="datetime-local"
+          />
+
+          <FormField
+            control={form.control}
+            name="isAllDay"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Todo el día</FormLabel>
+                <div className="h-9 flex items-center">
+                  <input
+                    type="checkbox"
+                    checked={field.value}
+                    onChange={(e) => field.onChange(e.target.checked)}
+                  />
+                </div>
+                <FormMessage />
+              </FormItem>
             )}
-
-            <div className="grid md:grid-cols-2 items-start gap-4">
-              <FormField
-                control={form.control}
-                name="title"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Título</FormLabel>
-                    <FormControl>
-                      <Input placeholder="Nombre del evento" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-              <FormField
-                control={form.control}
-                name="type"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Tipo</FormLabel>
-                    <Select value={field.value} onValueChange={field.onChange}>
-                      <FormControl>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Selecciona tipo" />
-                        </SelectTrigger>
-                      </FormControl>
-                      <SelectContent>
-                        {Object.values(EventType).map((t) => (
-                          <SelectItem key={t} value={t}>
-                            {t}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div>
-
-            <FormField
-              control={form.control}
-              name="shortDescription"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Descripción corta</FormLabel>
-                  <FormControl>
-                    <Input
-                      placeholder="Una frase clara y concisa…"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="description"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Descripción</FormLabel>
-                  <FormControl>
-                    <Textarea
-                      rows={4}
-                      placeholder="Detalles del evento, objetivos, público…"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader>
-            <CardTitle>Fecha y horario</CardTitle>
-            <CardDescription>
-              Configura el horario considerando tu zona horaria.
-            </CardDescription>
-          </CardHeader>
-
-          <CardContent className="space-y-4">
-            <div className="grid md:grid-cols-2 items-start gap-4">
-              <FormField
-                control={form.control}
-                name="startDate"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Inicio</FormLabel>
-                    <FormControl>
-                      <Input type="datetime-local" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="endDate"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Fin</FormLabel>
-                    <FormControl>
-                      <Input type="datetime-local" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div>
-
-            <div className="grid md:grid-cols-2 items-start gap-4">
-              <FormField
-                control={form.control}
-                name="timezone"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Zona horaria</FormLabel>
-                    <FormControl>
-                      <Input placeholder="America/Lima" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="isAllDay"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Todo el día</FormLabel>
-                    <div className="h-9 flex items-center">
-                      <input
-                        type="checkbox"
-                        checked={field.value}
-                        onChange={(e) => field.onChange(e.target.checked)}
-                      />
-                    </div>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div>
-          </CardContent>
-        </Card>
+          />
+        </FormSection>
 
         <Card>
           <CardHeader>

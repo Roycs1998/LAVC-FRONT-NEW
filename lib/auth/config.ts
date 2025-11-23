@@ -1,46 +1,33 @@
-import { NextAuthOptions } from "next-auth";
-import CredentialsProvider from "next-auth/providers/credentials";
+import NextAuth, { type NextAuthConfig } from "next-auth";
+import Credentials from "next-auth/providers/credentials";
 import { JWT } from "next-auth/jwt";
 import { Session } from "next-auth";
 import axios, { AxiosError } from "axios";
-
-interface ExtendedJWT extends JWT {
-  role: string;
-  companyId?: string;
-  emailVerified: boolean;
-  person: {
-    firstName: string;
-    lastName: string;
-    phone?: string;
-  };
-  company?: {
-    name: string;
-    entityStatus: string;
-  };
-}
 
 interface ExtendedSession extends Session {
   user: {
     id: string;
     email: string;
-    role: string;
-    companyId?: string;
+    roles: string[];
     emailVerified: boolean;
     person: {
       firstName: string;
       lastName: string;
+      fullName: string;
       phone?: string;
     };
     company?: {
+      id: string;
+      contactEmail?: string;
+      contactPhone?: string;
       name: string;
-      entityStatus: string;
     };
   };
 }
 
-export const authOptions: NextAuthOptions = {
+export const authConfig: NextAuthConfig = {
   providers: [
-    CredentialsProvider({
+    Credentials({
       id: "credentials",
       name: "credentials",
       credentials: {
@@ -53,7 +40,7 @@ export const authOptions: NextAuthOptions = {
         }
 
         try {
-          const email = credentials.email.trim().toLowerCase();
+          const email = credentials.email;
           const apiUrl = process.env.NEXT_PUBLIC_API_URL;
           if (!apiUrl) throw new Error("API URL no configurada");
 
@@ -73,7 +60,7 @@ export const authOptions: NextAuthOptions = {
           return {
             id: user.id,
             email: user.email,
-            role: user.role,
+            roles: user.roles,
             companyId: user.companyId,
             emailVerified: user.emailVerified,
             person: user.person,
@@ -115,33 +102,32 @@ export const authOptions: NextAuthOptions = {
     async jwt({ token, user }) {
       if (user) {
         const u = user as any;
+        token.sub = u.id;
+        token.email = u.email;
         token.accessToken = u.accessToken;
-        token.role = u.role;
-        token.companyId = u.companyId;
+        token.roles = u.roles;
         token.emailVerified = u.emailVerified;
         token.person = u.person;
         token.company = u.company;
       }
-
       return token as JWT;
     },
 
     async session({ session, token }) {
-      (session as any).accessToken = (token as any).accessToken;
+      const email = token.email ?? session.user?.email ?? null;
 
-      if (session.user) {
-        session.user = {
-          ...session.user,
-          id: token.sub ?? "",
-          email: token.email ?? session.user.email,
-          role: (token as any).role,
-          companyId: (token as any).companyId,
-          emailVerified: (token as any).emailVerified,
-          person: (token as any).person,
-          company: (token as any).company,
-          accessToken: (token as any).accessToken,
-        };
-      }
+      session.user = {
+        id: (token.sub as string) ?? "",
+        email: email!,
+        roles: (token as any).roles ?? [],
+        emailVerified: (token as any).emailVerified ?? false,
+        person: (token as any).person ?? {},
+        company: (token as any).company ?? {},
+        accessToken: (token as any).accessToken ?? "",
+      };
+
+      // También exponer el token directamente si lo necesitas
+      (session as any).accessToken = (token as any).accessToken;
 
       return session as ExtendedSession;
     },
@@ -151,6 +137,43 @@ export const authOptions: NextAuthOptions = {
       if (new URL(url).origin === baseUrl) return url;
       return baseUrl;
     },
+    authorized({ auth, request: { nextUrl } }) {
+      const user = auth?.user;
+      const isLoggedIn = Boolean(user);
+      const pathname = nextUrl.pathname;
+
+      const protectedRoutes = ["/dashboard"];
+
+      const authRoutes = [
+        "/login",
+        "/register",
+        "/change-password",
+        "/forget-password",
+        "/resend-verification",
+        "/resend-password",
+        "/verify-email",
+      ];
+
+      const isProtectedRoute = protectedRoutes.some((route) =>
+        pathname.includes(route)
+      );
+
+      const isAuthRoute = authRoutes.some((route) => pathname.includes(route));
+
+      if (isProtectedRoute && !isLoggedIn) {
+        const loginUrl = new URL("/login", nextUrl);
+        loginUrl.searchParams.set("callbackUrl", pathname);
+        return Response.redirect(loginUrl);
+      }
+
+      if (isAuthRoute && isLoggedIn) {
+        return Response.redirect(new URL("/dashboard", nextUrl));
+      }
+
+      return true;
+    },
   },
   debug: process.env.NODE_ENV === "development",
 };
+
+export const { signIn, signOut, auth, handlers } = NextAuth(authConfig);

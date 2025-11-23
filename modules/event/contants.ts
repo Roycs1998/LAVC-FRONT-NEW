@@ -33,3 +33,14 @@ export enum AgendaItemType {
   QA = "qa",
   OTHER = "other",
 }
+
+export const EventTypeLabels: Record<EventType, string> = {
+  [EventType.CONFERENCE]: "Conferencia",
+  [EventType.WORKSHOP]: "Workshop",
+  [EventType.SEMINAR]: "Seminario",
+  [EventType.WEBINAR]: "Webinar",
+  [EventType.MEETUP]: "Meetup",
+  [EventType.NETWORKING]: "Networking",
+  [EventType.TRAINING]: "Training",
+  [EventType.OTHER]: "Otro",
+};

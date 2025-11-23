@@ -10,17 +10,27 @@ import SpeakerTable from "./ui/table/speaker-table";
 import { SpeakerPaginatedResponse } from "@/modules/speaker/contract";
 import { SpeakerFilters } from "./ui/table/speaker-filters";
 import { SpeakerFilters as Filter } from "@/modules/speaker/contract";
+import { UserRole } from "@/modules/user";
+import { ensureRoles } from "@/lib/utils/server/auth";
 
 interface Props {
   searchParams: Promise<Filter>;
 }
 
 export default async function CompaniesPage({ searchParams }: Props) {
+  const session = await ensureRoles([
+    UserRole.PLATFORM_ADMIN,
+    UserRole.COMPANY_ADMIN,
+  ]);
+
   const api = await serverApi();
   const params = await searchParams;
 
   const { data } = await api.get<SpeakerPaginatedResponse>("/speakers", {
-    params,
+    params: {
+      ...params,
+      companyId: session.user.company?.id,
+    },
   });
 
   return (

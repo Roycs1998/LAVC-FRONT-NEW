@@ -11,7 +11,7 @@ export enum UserRole {
 export interface User {
   id: string;
   email: string;
-  role: UserRole;
+  roles: UserRole[];
   companyId?: string;
   emailVerified: boolean;
   person: Person;

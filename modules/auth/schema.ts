@@ -26,7 +26,6 @@ export const registerSchema = z
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/,
         "La contraseña debe contener al menos una minúscula, una mayúscula y un número"
       ),
-
     confirmPassword: z.string().min(1, "Confirma tu contraseña"),
 
     firstName: z

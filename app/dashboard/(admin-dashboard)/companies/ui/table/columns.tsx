@@ -25,9 +25,9 @@ export const companiesColumns: ColumnDef<Company>[] = [
       const c = row.original;
       return (
         <div>
-          {c.contactName || "-"}
+          {c.contactEmail || "-"}
           <div className="text-xs text-muted-foreground">
-            {c.contactEmail || c.contactPhone || ""}
+            {c.contactPhone || ""}
           </div>
         </div>
       );

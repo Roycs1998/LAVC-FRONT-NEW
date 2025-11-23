@@ -1,9 +1,8 @@
 import axios from "axios";
-import { getServerSession } from "next-auth";
-import { authOptions } from "../auth/config";
+import { auth } from "../auth/config";
 
 export async function serverApi() {
-  const session = await getServerSession(authOptions);
+  const session = await auth();
 
   const token = session?.accessToken;
 

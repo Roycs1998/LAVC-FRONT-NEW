@@ -56,17 +56,28 @@ const settingsSchema = z.object({
 });
 
 export const eventCreateSchema = z.object({
-  title: z.string().min(1).max(140),
-  description: z.string().max(2000).optional(),
-  shortDescription: z.string().max(200).optional(),
+  title: z
+    .string()
+    .nonempty("Título obligatorio")
+    .min(1, "Mínimo 1 carácter")
+    .max(140, "Máximo 140 caracteres"),
+  description: z
+    .string()
+    .nonempty("Descripción obligatoria")
+    .min(10, "Mínimo 10 caracteres")
+    .max(2000, "Máximo 2000 caracteres"),
+  shortDescription: z
+    .string()
+    .nonempty("Descripción corta obligatoria")
+    .min(10, "Mínimo 10 caracteres")
+    .max(200, "Máximo 200 caracteres"),
 
   companyId: z.string().min(1),
   type: z.enum(EventType),
   eventStatus: z.enum(EventStatus),
 
-  startDate: z.string().min(1),
-  endDate: z.string().min(1),
-  timezone: z.string().optional(),
+  startDate: z.date().nonoptional("Fecha de inicio obligatoria"),
+  endDate: z.date().nonoptional("Fecha de fin obligatoria"),
   isAllDay: z.boolean(),
 
   location: locationSchema,

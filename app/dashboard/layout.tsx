@@ -1,10 +1,10 @@
 import { Metadata } from "next";
 import { redirect } from "next/navigation";
-import { getServerSession } from "next-auth";
 
 import { DashboardShell } from "@/components/layout/dashboard-shell";
 import { DashboardSidebar } from "@/components/layout/dashboard-sidebar";
 import { SidebarProvider } from "@/components/ui/sidebar";
+import { auth } from "@/lib/auth/config";
 
 export const metadata: Metadata = {
   title: "Dashboard | LAVC Platform",
@@ -18,7 +18,7 @@ interface DashboardLayoutProps {
 export default async function DashboardLayout({
   children,
 }: DashboardLayoutProps) {
-  const session = await getServerSession();
+  const session = await auth();
 
   if (!session) {
     redirect("/login");

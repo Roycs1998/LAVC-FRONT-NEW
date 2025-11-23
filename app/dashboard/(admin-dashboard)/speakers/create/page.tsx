@@ -1,18 +1,57 @@
-"use client";
+import { UserRole } from "@/modules/user";
+import { SpeakerForm } from "./ui/speaker-form";
+import { ensureRoles } from "@/lib/utils/server/auth";
+import { serverApi } from "@/lib/axios/server";
+import {
+  Company,
+  CompanyPaginatedResponse,
+  CompanyType,
+} from "@/modules/company";
+import { PageHeader } from "@/components/layout/page-header";
 
-import { SpeakerForm } from "../ui/speaker-form";
+export default async function NewSpeakerPage() {
+  const api = await serverApi();
 
-export default function NewSpeakerPage() {
+  const session = await ensureRoles([
+    UserRole.PLATFORM_ADMIN,
+    UserRole.COMPANY_ADMIN,
+  ]);
+
+  const roles = session.user.roles;
+  const isPlatformAdmin = roles.includes(UserRole.PLATFORM_ADMIN);
+  const isCompanyAdmin = roles.includes(UserRole.COMPANY_ADMIN);
+
+  let companies: Company[] = [];
+  let defaultCompanyId: string | undefined = undefined;
+
+  if (isPlatformAdmin) {
+    const { data } = await api.get<CompanyPaginatedResponse>("/companies", {
+      params: {
+        type: CompanyType.EVENT_ORGANIZER,
+        limit: 10,
+        page: 1,
+      },
+    });
+
+    companies = data.data || [];
+  }
+
+  if (isCompanyAdmin) {
+    defaultCompanyId = session.user.company?.id;
+  }
+
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-semibold">Nueva exponente</h1>
-        <p className="text-sm text-muted-foreground">
-          Completa los campos y crea tu exponente.
-        </p>
-      </div>
+      <PageHeader
+        title="Nuevo exponente"
+        subtitle="Completa los campos y crea tu exponente."
+      />
 
-      <SpeakerForm mode="create" />
+      <SpeakerForm
+        mode="create"
+        companies={companies}
+        defaultCompanyId={defaultCompanyId}
+      />
     </div>
   );
 }

@@ -1,8 +1,12 @@
 import { ShortCompany } from "@/modules/company";
 import { Person } from "@/modules/person";
 import { Address } from "@/modules/address";
-import { AgendaItemType, EventLocationType, EventStatus } from "./contants";
-import { EventType } from "next-auth";
+import {
+  AgendaItemType,
+  EventLocationType,
+  EventStatus,
+  EventType,
+} from "./contants";
 import { ShortSpeaker } from "@/modules/speaker";
 
 export interface EventVirtualDetails {

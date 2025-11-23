@@ -7,17 +7,19 @@ declare module "next-auth" {
     user: {
       id: string;
       email: string;
-      role: string;
-      companyId?: string;
+      roles: string[];
       emailVerified: boolean;
       person: {
         firstName: string;
         lastName: string;
         phone?: string;
+        fullName: string;
       };
       company?: {
+        id: string;
+        contactEmail?: string;
+        contactPhone?: string;
         name: string;
-        entityStatus: string;
       };
       accessToken?: string;
     } & DefaultSession["user"];
@@ -26,17 +28,19 @@ declare module "next-auth" {
   interface User {
     id: string;
     email: string;
-    role: string;
-    companyId?: string;
+    roles: string[];
     emailVerified: boolean;
     person: {
       firstName: string;
       lastName: string;
       phone?: string;
+      fullName: string;
     };
     company?: {
+      id: string;
+      contactEmail?: string;
+      contactPhone?: string;
       name: string;
-      entityStatus: string;
     };
     accessToken?: string;
   }
@@ -45,17 +49,20 @@ declare module "next-auth" {
 declare module "next-auth/jwt" {
   interface JWT {
     accessToken?: string;
-    role: string;
+    roles: string[];
     companyId?: string;
     emailVerified: boolean;
     person: {
       firstName: string;
       lastName: string;
       phone?: string;
+      fullName: string;
     };
     company?: {
+      id: string;
+      contactEmail?: string;
+      contactPhone?: string;
       name: string;
-      entityStatus: string;
     };
   }
 }

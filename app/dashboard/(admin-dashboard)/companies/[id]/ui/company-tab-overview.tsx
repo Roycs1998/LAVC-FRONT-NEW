@@ -45,6 +45,23 @@ export function CompanyTabOverview({ company }: Props) {
               <span className="text-sm">{formatAddress(company)}</span>
             </div>
           )}
+
+          <div className="flex flex-col gap-3 pt-4 border-t">
+            <h4 className="text-sm font-medium">Capacidades</h4>
+
+            <div className="flex flex-col items-start gap-1">
+              <span className="text-sm">
+                {`Puede crear eventos: ${
+                  company.settings.canCreateEvents ? "Sí" : "No"
+                }`}
+              </span>
+              <span className="text-sm">
+                {`Puede subir presentadores: ${
+                  company.settings.canUploadSpeakers ? "Sí" : "No"
+                }`}
+              </span>
+            </div>
+          </div>
         </div>
 
         {company.description && (
