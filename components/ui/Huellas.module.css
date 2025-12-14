@@ -1,0 +1,27 @@
+.huellaDecorativa {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+
+  /* Que nunca desborde del viewport */
+  width: auto;
+  max-width: 100vw;
+
+  /* Altura por defecto (desktop) */
+  height: 800px;
+}
+
+/* Tablets / móviles grandes */
+@media (max-width: 1024px) {
+  .huellaDecorativa {
+    height: 600px;
+  }
+}
+
+/* Móviles pequeños */
+@media (max-width: 640px) {
+  .huellaDecorativa {
+    height: 400px;
+  }
+}

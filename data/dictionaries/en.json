@@ -1,0 +1,187 @@
+{
+  "nav_main": {
+    "navbar": {
+      "manual_quoter": "Manual Quoter",
+      "maritime_schedules": "Maritime Schedules",
+      "air_schedules": "Air Schedules",
+      "tracking": "Tracking",
+      "contact_us": "About Us",
+      "login": "Log In",
+      "register": "Register",
+      "lacv_2025": "LAVC 2025",
+      "frequently_asked_questions": "Frequently Asked Questions",
+      "publications": "Publications",
+      "about_LAVC": "About LACV",
+      "contact": "Contact",
+      "event_and_workshops": "Events",
+      "speakers": "Speakers",
+      "program": "Program",
+      "stand_out": "Stand Out!",
+      "lavc_2026": "LAVC 2026",
+      "ambassador": "Ambassador",
+      "scholarship": "Rippie Scholar",
+      "lavc_gallery": "LAVC Gallery",
+      "historic_photos": "Historic Photos",
+      "educational_material": "Educational Material",
+      "companies": "Companies",
+      "news": "News",
+      "gallery": "Gallery",
+      "library_lavc": "LAVC Library",
+      "sponsors": "Sponsors",
+      "official_sponsors": "Official Sponsors",
+      "official_supplier": "Official Supplier"
+    },
+    "carrucel": {
+      "date": "18 - 21 May Lima, Peru",
+      "event_name": "LAVC 2025",
+      "event_invitation": "Sign up now for the largest veterinary medicine event!",
+      "event": "See Events"
+    },
+    "informationLetters": {
+      "scheduled_talks": "SCHEDULED TALKS",
+      "accommodations": "Accommodations",
+      "tourism": "Tourism"
+    },
+    "lavcLetter": {
+      "are_you_ready_for_lavc_2025": "Are You Ready for LAVC 2025?",
+      "this_was_lavc_2024": "This Was LAVC 2024!",
+      "invitation_lavc_2025": "You can't miss LAVC 2025, contests, conferences, shows and much more.",
+      "play_video": "Play Video"
+    },
+    "footer": {
+      "professional_resources": "Professional Resources",
+      "explore_opportunities": "Explore Opportunities",
+      "Stay_connected": "Stay Connected",
+      "earn_veterinary_ce": "Earn Veterinary CE",
+      "event_calendar": "Event Calendar",
+      "advertise_with_us": "Advertise With Us",
+      "navc_brand": "LAVC Brand Guidelines",
+      "comunity_veterinary": "© 2025 Latin American Veterinary conference",
+      "media_kits": "Media Kits",
+      "we_are": "We are",
+      "contact_us_button": "Contact us",
+      "support": "Support",
+      "talks_program": "Talks program",
+      "scholarship": "Rippie Scholarship",
+      "become_ambassador": "Become an ambassador",
+      "speakers_label": "Speakers"
+    },
+    "location_letter": {
+      "event_location": "EVENT LOCATION",
+      "location_description": "JOCKEY EXHIBITION CENTER, Av. Javier Prado Este at the intersection with Panamericana Sur Road S/N, near Gate 1, Monterrico Racecourse, Parcel I, Santiago de Surco",
+      "location": "LOCATION"
+    },
+    "horizontal_card": {
+      "motto": "The largest continuing education conference in veterinary medicine on the Pacific coast of South America",
+      "co": "Eugene O'Neill, Executive Director"
+    },
+    "social_widget_message": "Hi! How can I help you?"
+  },
+  "home": {
+    "hero": {
+      "highlight_title": "LAVC 2026",
+      "tagline": "The most important veterinary medicine event!",
+      "description": "You're just one step away from registering. Don't miss this unique opportunity!",
+      "cta": "Register here"
+    },
+    "extra_information": {
+      "title": "Additional information",
+      "subtitle": "More Information"
+    },
+    "benefits": {
+      "title": "These are some of the benefits we offer you",
+      "subtitle": "Why attend LAVC?",
+      "items": {
+        "exclusive_talks": {
+          "title": "🎓 Exclusive talks with international speakers",
+          "description": "Up-to-date topics, real clinical cases, and trends that will shape the future of the profession."
+        },
+        "networking": {
+          "title": "🤝 Networking with thousands of colleagues and experts",
+          "description": "Exchange experiences, expand your network, and strengthen the veterinary community."
+        },
+        "commercial_zone": {
+          "title": "🧪 Commercial zone with more than 60 companies",
+          "description": "Explore the latest in products, services, and innovation for veterinary medicine—from equipment to pharmacology, technology, and more."
+        },
+        "specialized_event": {
+          "title": "🌎 100% specialized event",
+          "description": "Unlike other conferences, LAVC is designed exclusively for veterinarians. Every talk, booth, and activity has one goal: improving your professional practice."
+        }
+      },
+      "cta": "About our event"
+    },
+    "experience": {
+      "title": "This was LAVC 2025",
+      "subtitle": "Unforgettable experience",
+      "description": "LAVC 2025 was a historic edition. More than 5,500 attendees enjoyed four intense days of learning, connection, and discovery. Over 20 conferences with international speakers showcased new treatments, products, and technologies, strengthening ties among professionals across Latin America. Don't miss the next edition—LAVC 2026 promises to be even bigger, richer, and more impactful.",
+      "cta": "Watch video"
+    },
+    "location": {
+      "title": "Find us at",
+      "subtitle": "Where will it take place?",
+      "description": "The event will take place at the Jockey Club Exhibition Center, located near the Panamericana highway, in the area of Avenida 3 de Mayo.",
+      "open_waze": "Open in Waze",
+      "open_maps": "Open in Google Maps"
+    },
+    "numbers": {
+      "participants": "Participants",
+      "companies": "Companies",
+      "years_experience": "Years of experience"
+    },
+    "partners": {
+      "title_prefix": "Main",
+      "title_highlight": "Sponsors",
+      "subtitle": "Sponsors"
+    }
+  },
+  "about": {
+    "hero_title": "WE ARE LAVC",
+    "story": {
+      "title": "Latin American Veterinary Conference",
+      "description": "LAVC was born from the North American Veterinary Community (NAVC) based in Gainesville, Florida, USA. From the beginning, the goal was to bring to Lima a small portion of the NAVC Conference (now VMX) in Orlando, continuing NAVC's mission of developing better veterinary professionals worldwide. To achieve our objectives, LAVC welcomes participants from all over Peru and Latin America. The effort of LAVC has also helped connect veterinary professionals and students with the animal health industry, contributing to this segment's development and growth in recent years. The goal of delivering quality-based education has allowed the organization to hold RACE (Registry of Approved Continuing Education) certification since 2017. LAVC is the first and only organization with this type of certification in all of Latin America.",
+      "subtitle_one": "DID YOU KNOW?",
+      "paragraph_one": "LAVC is a Peruvian non-profit organization that has brought together veterinarians from Peru and Latin America since 2005 to offer them top-level continuing education and thus contribute to the development of professionals and the region.",
+      "subtitle_two": "RACE Certification",
+      "paragraph_two": "We are pleased to announce that the Latin American Veterinary Conference has achieved one of the most important quality certifications in Continuing Education worldwide: the certification granted by the American Association of Veterinary State Boards (AAVSB), known as RACE (Registry of Approved Continuing Education). This world-class quality certification is awarded to prestigious continuing education events such as the North American Veterinary Community, Western States Veterinary Conference, World Veterinary Association, World Association of Veterinary Dermatology, and the British Small Animal Veterinary Association, among others. This important approval confirms nearly 14 years of continuous, high-quality activity and ongoing improvement. For the 2019 program, we have 84 hours of Continuing Education approved, in which a North American or Canadian colleague can accumulate up to a maximum of 18 CE hours to renew their professional license. It is a privilege for Latin America to have an organization with this type of certification. Now LAVC's quality certifications include the RACE granted by the AAVSB.",
+      "image_alt": "Veterinarians attending a Latin American Veterinary Conference"
+    },
+    "mission": {
+      "title": "MISSION",
+      "description": "Offer top-level continuing education for all members of the animal health community in Latin America."
+    },
+    "vision": {
+      "title": "VISION",
+      "description": "The continuing education organization most focused on Latin American veterinarians. An organization in constant pursuit of excellence and organizational efficiency. To be the best veterinary education organization worldwide."
+    },
+    "labels": {
+      "more_info": "More information",
+      "read_more": "Read more",
+      "show_less": "Show less"
+    }
+  },
+  "program": {
+    "title": "PRELIMINARY PROGRAM",
+    "location_label": "Location:"
+  },
+  "tourism": {
+    "title": "Tourism",
+    "subtitle": "The best of Peru for your LAVC 2026 experience",
+    "description1": "During your participation in LAVC 2026, you'll have the opportunity to discover some of the most fascinating destinations in Peru. Explore Lima, a vibrant capital by the sea with a rich colonial heritage and world-renowned gastronomy. Immerse yourself in Inca history in Cusco, the Sacred Valley, and the majestic citadel of Machu Picchu. And for nature lovers, Puerto Maldonado awaits with its tropical jungles and the unique biodiversity of the Tambopata National Reserve.",
+    "description2": "Get ready for an unforgettable experience before or after the conference!",
+    "visit_lima": "Visit Lima",
+    "visit_cusco": "Visit Cusco",
+    "visit_amazon": "Visit Amazonas",
+    "itinerary": "Itinerary",
+    "lodging": "Lodging",
+    "cusco_express": "Cusco Express 3d2n",
+    "discover_cusco": "Discover Cusco 4d3n",
+    "amazon_lodge": "Refugio Amazonas Lodge",
+    "more_information": "More information",
+    "contact": "Contact",
+    "contact_whatsapp": "WhatsApp",
+    "contact_email": "E-mail",
+    "contact_website": "Website",
+    "visit_site": "Visit website"
+  }
+}

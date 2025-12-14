@@ -1,0 +1,1 @@
+export { Informationletter } from './Informationletter'

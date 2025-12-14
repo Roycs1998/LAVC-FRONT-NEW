@@ -1,0 +1,187 @@
+{
+  "nav_main": {
+    "navbar": {
+      "manual_quoter": "Cotador Manual",
+      "maritime_schedules": "Horários Marítimos",
+      "air_schedules": "Horários Aéreos",
+      "tracking": "Rastreamento",
+      "contact_us": "Sobre Nós",
+      "login": "Entrar",
+      "register": "Registrar",
+      "lacv_2025": "LAVC 2025",
+      "frequently_asked_questions": "Perguntas Frequentes",
+      "publications": "Publicações",
+      "about_LAVC": "Sobre o LACV",
+      "contact": "Contato",
+      "event_and_workshops": "Eventos",
+      "speakers": "Palestrantes",
+      "program": "Programa",
+      "stand_out": "Destaque-se!",
+      "lavc_2026": "LAVC 2026",
+      "ambassador": "Embaixador",
+      "scholarship": "Bolsista Rippie",
+      "lavc_gallery": "Galeria LAVC",
+      "historic_photos": "Fotos históricas",
+      "educational_material": "Material educativo",
+      "companies": "Empresas",
+      "news": "Notícias",
+      "gallery": "Galeria",
+      "library_lavc": "Biblioteca LAVC",
+      "sponsors": "Patrocinadores",
+      "official_sponsors": "Patrocinadores Oficiais",
+      "official_supplier": "Fornecedor Oficial"
+    },
+    "carrucel": {
+      "date": "18 - 21 Maio, Lima, Peru",
+      "event_name": "LAVC 2025",
+      "event_invitation": "Inscreva-se agora no maior evento de medicina veterinária!",
+      "event": "Ver Eventos"
+    },
+    "informationLetters": {
+      "scheduled_talks": "PALESTRAS PROGRAMADAS",
+      "accommodations": "Hospedagens",
+      "tourism": "Turismo"
+    },
+    "lavcLetter": {
+      "are_you_ready_for_lavc_2025": "Você está pronto para o LAVC 2025?",
+      "this_was_lavc_2024": "Assim foi o LAVC 2024!",
+      "invitation_lavc_2025": "Você não pode perder o LAVC 2025, concursos, conferências, shows e muito mais.",
+      "play_video": "Assistir vídeo"
+    },
+    "footer": {
+      "professional_resources": "Recursos Profissionais",
+      "explore_opportunities": "Explorar Oportunidades",
+      "Stay_connected": "Fique Conectado",
+      "earn_veterinary_ce": "Obtenha educação continuada em veterinária",
+      "event_calendar": "Calendário de eventos",
+      "advertise_with_us": "Anuncie Conosco",
+      "navc_brand": "Diretrizes da marca LAVC",
+      "comunity_veterinary": "© 2025 Latin American Veterinary conference",
+      "media_kits": "Kits de mídia",
+      "we_are": "Somos",
+      "contact_us_button": "Contate-nos",
+      "support": "Suporte",
+      "talks_program": "Programa de palestras",
+      "scholarship": "Bolsa Rippie",
+      "become_ambassador": "Torne-se embaixador",
+      "speakers_label": "Palestrantes"
+    },
+    "location_letter": {
+      "event_location": "LOCALIZAÇÃO DO EVENTO",
+      "location_description": "CENTRO DE EXPOSIÇÕES JOCKEY, Av. Javier Prado Este, cruzamento com a Rodovia Panamericana Sul S/N, próximo à Portaria 1, Hipódromo de Monterrico, Parcela I, Santiago de Surco",
+      "location": "LOCALIZAÇÃO"
+    },
+    "horizontal_card": {
+      "motto": "A maior conferência de educação continuada em medicina veterinária da costa do Pacífico da América do Sul",
+      "co": "Eugene O'Neill, Diretor Executivo"
+    },
+    "social_widget_message": "Olá! Como posso te ajudar?"
+  },
+  "home": {
+    "hero": {
+      "highlight_title": "LAVC 2026",
+      "tagline": "O evento mais importante de medicina veterinária!",
+      "description": "Você está a um passo de se inscrever. Não perca esta oportunidade única!",
+      "cta": "Inscreva-se aqui"
+    },
+    "extra_information": {
+      "title": "Informações adicionais",
+      "subtitle": "Mais Informações"
+    },
+    "benefits": {
+      "title": "Estes são alguns dos benefícios que oferecemos",
+      "subtitle": "Por que ir ao LAVC?",
+      "items": {
+        "exclusive_talks": {
+          "title": "🎓 Palestras exclusivas com palestrantes internacionais",
+          "description": "Temas atualizados, casos clínicos reais e tendências que definirão o futuro da profissão."
+        },
+        "networking": {
+          "title": "🤝 Networking com milhares de colegas e especialistas",
+          "description": "Troque experiências, amplie sua rede de contatos e fortaleça a comunidade veterinária."
+        },
+        "commercial_zone": {
+          "title": "🧪 Área comercial com mais de 60 empresas",
+          "description": "Explore o que há de mais recente em produtos, serviços e inovação para a medicina veterinária — de equipamentos a farmacologia, tecnologia e muito mais."
+        },
+        "specialized_event": {
+          "title": "🌎 Evento 100% especializado",
+          "description": "Ao contrário de outros congressos, o LAVC é projetado exclusivamente para médicos veterinários. Cada palestra, estande e atividade tem um único objetivo: melhorar sua prática profissional."
+        }
+      },
+      "cta": "Sobre nosso evento"
+    },
+    "experience": {
+      "title": "Assim foi o LAVC 2025",
+      "subtitle": "Experiência inesquecível",
+      "description": "O LAVC 2025 foi uma edição histórica. Mais de 5.500 participantes viveram quatro dias intensos de aprendizado, conexão e descoberta. Mais de 20 conferências com palestrantes internacionais apresentaram novos tratamentos, produtos e tecnologias, fortalecendo os laços entre profissionais de toda a América Latina. Não perca a próxima edição: o LAVC 2026 promete ser ainda maior, mais enriquecedor e mais impactante.",
+      "cta": "Assistir vídeo"
+    },
+    "location": {
+      "title": "Encontre-nos em",
+      "subtitle": "Onde será realizado?",
+      "description": "O evento será realizado no Centro de Exposições Jockey Club, localizado próximo à rodovia Panamericana, na região da Avenida 3 de Mayo.",
+      "open_waze": "Abrir no Waze",
+      "open_maps": "Abrir no Google Maps"
+    },
+    "numbers": {
+      "participants": "Participantes",
+      "companies": "Empresas",
+      "years_experience": "Anos de experiência"
+    },
+    "partners": {
+      "title_prefix": "Principais",
+      "title_highlight": "Patrocinadores",
+      "subtitle": "Patrocinadores"
+    }
+  },
+  "about": {
+    "hero_title": "NÓS SOMOS O LAVC",
+    "story": {
+      "title": "Conferência Veterinária Latino-Americana",
+      "description": "O LAVC nasce do North American Veterinary Community (NAVC), com sede em Gainesville, Flórida, EUA. Desde o início, o objetivo foi levar a Lima uma pequena parte da conferência do NAVC (agora VMX) em Orlando, continuando a missão do NAVC de desenvolver melhores profissionais veterinários no mundo. Para cumprir nossos objetivos, o LAVC recebe participantes de todas as partes do Peru e de diferentes regiões da América Latina. O esforço do LAVC também aproximou profissionais e estudantes de Medicina Veterinária da indústria de saúde animal, contribuindo para o desenvolvimento e crescimento desse segmento nos últimos anos. O compromisso de oferecer educação baseada em qualidade permitiu que, desde 2017, a organização conte com a certificação RACE (Registry of Approved Continuing Education). O LAVC é a primeira e única organização com esse tipo de certificação em toda a América Latina.",
+      "subtitle_one": "VOCÊ SABIA?",
+      "paragraph_one": "O LAVC é uma organização peruana sem fins lucrativos que, desde 2005, reúne os médicos veterinários do Peru e da América Latina para oferecer educação continuada de alto nível e, assim, contribuir para o desenvolvimento dos profissionais e da região.",
+      "subtitle_two": "Certificação RACE",
+      "paragraph_two": "Temos o prazer de anunciar que a Latin American Veterinary Conference alcançou uma das certificações de qualidade em Educação Continuada mais importantes do mundo: a certificação concedida pela American Association of Veterinary State Boards (AAVSB), denominada RACE (Registry of Approved Continuing Education). Uma certificação de qualidade mundial concedida a eventos de educação continuada de prestígio, como o North American Veterinary Community, Western States Veterinary Conference, World Veterinary Association, World Association of Veterinary Dermatology, British Small Animal Veterinary Association, entre outros. Essa importante aprovação confirma quase 14 anos de atividade contínua e ininterrupta de primeira qualidade e melhoria contínua. Para o programa de 2019, temos aprovadas 84 horas de Educação Continuada nas quais um colega norte-americano ou canadense poderá acumular até 18 horas de CE para renovar sua licença profissional. É um privilégio para a América Latina ter uma organização com esse tipo de certificação. Agora, entre as certificações de qualidade do LAVC, está a RACE concedida pela AAVSB.",
+      "image_alt": "Veterinários participando da Conferência Veterinária Latino-Americana"
+    },
+    "mission": {
+      "title": "MISSÃO",
+      "description": "Oferecer educação continuada de alto nível para todos os membros da comunidade de saúde animal da América Latina."
+    },
+    "vision": {
+      "title": "VISÃO",
+      "description": "Ser a organização de educação continuada mais focada no médico veterinário da América Latina. Uma organização em busca constante da excelência e eficiência organizacional. Ser a melhor organização de educação veterinária do mundo."
+    },
+    "labels": {
+      "more_info": "Mais informações",
+      "read_more": "Ler mais",
+      "show_less": "Mostrar menos"
+    }
+  },
+  "program": {
+    "title": "PROGRAMA PRELIMINAR",
+    "location_label": "Localização:"
+  },
+  "tourism": {
+    "title": "Turismo",
+    "subtitle": "O melhor do Peru para sua experiência no LAVC 2026",
+    "description1": "Durante sua participação no LAVC 2026, você terá a oportunidade de descobrir alguns dos destinos mais fascinantes do Peru. Explore Lima, uma capital vibrante à beira-mar, com uma rica herança colonial e uma gastronomia reconhecida mundialmente. Mergulhe na história dos incas em Cusco, no Vale Sagrado e na majestosa cidadela de Machu Picchu. E para os amantes da natureza, Puerto Maldonado espera por você com suas selvas tropicais e a biodiversidade única da Reserva Nacional de Tambopata.",
+    "description2": "Prepare-se para viver uma experiência inesquecível antes ou depois do congresso!",
+    "visit_lima": "Visite Lima",
+    "visit_cusco": "Visite Cusco",
+    "visit_amazon": "Visite Amazonas",
+    "itinerary": "Roteiro",
+    "lodging": "Hospedagens",
+    "cusco_express": "Cusco Express 3d2n",
+    "discover_cusco": "Discover Cusco 4d3n",
+    "amazon_lodge": "Refugio Amazonas Lodge",
+    "more_information": "Mais informações",
+    "contact": "Contato",
+    "contact_whatsapp": "Whatsapp",
+    "contact_email": "E-mail",
+    "contact_website": "Site",
+    "visit_site": "Ir para o site"
+  }
+}

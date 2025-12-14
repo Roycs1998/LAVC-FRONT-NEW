@@ -1,0 +1,104 @@
+.link {
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.navbar {
+  position: fixed;
+  transition: background-color 0.3s;
+  display: flex;
+  align-items: center;
+}
+
+.displayMobile{
+  display: none;
+}
+
+.scrolled {
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+  background-color: var(--primary-color-purple);
+}
+
+.icons {
+  margin-inline-end: 5px;
+  margin-block-end: 5px;
+}
+
+
+
+.hoverColor:hover {
+  color: var(--color-on-hover);
+}
+
+.dropdownMenu {
+  color: #fff !important;
+  display: none;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+}
+
+.mainLogo {
+  max-height: 45px;
+}
+
+.link {
+  margin: 0 10px;
+}
+
+.icons {
+  margin-right: 8px;
+}
+
+@media (max-width: 850px) {
+  .link {
+    display: none;
+  }
+
+  .displayMobile{
+    display: flex;
+    justify-content: center;
+  }
+
+  .dropdownMenu {
+    display: block;
+  }
+
+  .mainLogoPhone {
+    max-height: 35px;
+    block-size: 90px;
+    inline-size: 110px;
+  }
+
+  .mainLogo {
+    margin-inline-start: 10%;
+    block-size: 90px;
+    inline-size: 110px;
+  }
+}
+@media (max-width: 590px) {
+  .navbar {
+    block-size: 75px;
+    box-shadow: none;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Distribuir los elementos correctamente */
+    padding: 0 15px; /* Espacio interno */
+    width: 100%;
+  }
+
+
+  .mainLogo {
+    margin-inline-start: 5%;
+    block-size: 70px;
+    inline-size: 90px;
+  }
+
+  .scrolled {
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+    background-color: var(--primary-color-purple);
+  }
+}

@@ -1,0 +1,1 @@
+export { ConfirmPayment } from './ConfirmPayment'

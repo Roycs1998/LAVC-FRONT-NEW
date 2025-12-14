@@ -1,0 +1,1 @@
+export { SubtitleTag } from './SubtitleTag'

@@ -1,0 +1,1 @@
+export { CulqiPaymentGateway } from './CulqiPaymentGateway'

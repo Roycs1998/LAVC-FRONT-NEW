@@ -1,0 +1,712 @@
+[
+  {
+    "id": 1,
+    "universidad": "Universidad Nacional Mayor de San Marcos",
+    "departamento": "Lima"
+  },
+  {
+    "id": 2,
+    "universidad": "Universidad Nacional de San Cristóbal de Huamanga",
+    "departamento": "Ayacucho"
+  },
+  {
+    "id": 3,
+    "universidad": "Universidad Nacional de San Antonio Abad del Cusco",
+    "departamento": "Cusco"
+  },
+  {
+    "id": 4,
+    "universidad": "Universidad Nacional de Trujillo",
+    "departamento": "La Libertad"
+  },
+  {
+    "id": 5,
+    "universidad": "Universidad Nacional de San Agustín de Arequipa",
+    "departamento": "Arequipa"
+  },
+  {
+    "id": 6,
+    "universidad": "Universidad Nacional de Ingeniería",
+    "departamento": "Lima"
+  },
+  {
+    "id": 7,
+    "universidad": "Universidad Nacional Agraria La Molina",
+    "departamento": "Lima"
+  },
+  {
+    "id": 8,
+    "universidad": "Universidad Nacional San Luis Gonzaga",
+    "departamento": "Ica"
+  },
+  {
+    "id": 9,
+    "universidad": "Universidad Nacional del Centro del Perú",
+    "departamento": "Junín"
+  },
+  {
+    "id": 10,
+    "universidad": "Universidad Nacional de la Amazonía Peruana",
+    "departamento": "Loreto"
+  },
+  {
+    "id": 11,
+    "universidad": "Universidad Nacional del Altiplano",
+    "departamento": "Puno"
+  },
+  {
+    "id": 12,
+    "universidad": "Universidad Nacional de Piura",
+    "departamento": "Piura"
+  },
+  {
+    "id": 13,
+    "universidad": "Universidad Nacional de Cajamarca",
+    "departamento": "Cajamarca"
+  },
+  {
+    "id": 14,
+    "universidad": "Universidad Nacional Federico Villarreal",
+    "departamento": "Lima"
+  },
+  {
+    "id": 15,
+    "universidad": "Universidad Nacional Hermilio Valdizán de Huánuco",
+    "departamento": "Huánuco"
+  },
+  {
+    "id": 16,
+    "universidad": "Universidad Nacional de Huánuco",
+    "departamento": "Huánuco"
+  },
+  {
+    "id": 17,
+    "universidad": "Universidad Nacional de Educación Enrique Guzmán y Valle",
+    "departamento": "Lima"
+  },
+  {
+    "id": 18,
+    "universidad": "Universidad Nacional Daniel Alcides Carrión",
+    "departamento": "Pasco"
+  },
+  {
+    "id": 19,
+    "universidad": "Universidad Nacional del Callao",
+    "departamento": "Callao"
+  },
+  {
+    "id": 20,
+    "universidad": "Universidad Nacional José Faustino Sánchez Carrión",
+    "departamento": "Lima"
+  },
+  {
+    "id": 21,
+    "universidad": "Universidad Nacional Pedro Ruiz Gallo",
+    "departamento": "Lambayeque"
+  },
+  {
+    "id": 22,
+    "universidad": "Universidad Nacional Jorge Basadre Grohmann",
+    "departamento": "Tacna"
+  },
+  {
+    "id": 23,
+    "universidad": "Universidad Nacional Santiago Antúnez de Mayolo",
+    "departamento": "Ancash"
+  },
+  {
+    "id": 24,
+    "universidad": "Universidad Nacional de San Martín",
+    "departamento": "San Martín"
+  },
+  {
+    "id": 25,
+    "universidad": "Universidad Nacional de Ucayali",
+    "departamento": "Ucayali"
+  },
+  {
+    "id": 26,
+    "universidad": "Universidad Nacional de Tumbes",
+    "departamento": "Tumbes"
+  },
+  {
+    "id": 27,
+    "universidad": "Universidad Nacional del Santa",
+    "departamento": "Ancash"
+  },
+  {
+    "id": 28,
+    "universidad": "Universidad Nacional de Huancavelica",
+    "departamento": "Huancavelica"
+  },
+  {
+    "id": 29,
+    "universidad": "Universidad Nacional Amazónica de Madre de Dios",
+    "departamento": "Madre De Dios"
+  },
+  {
+    "id": 30,
+    "universidad": "Universidad Nacional Toribio Rodríguez de Mendoza de Amazonas",
+    "departamento": "Amazonas"
+  },
+  {
+    "id": 31,
+    "universidad": "Universidad Nacional Micaela Bastidas de Apurímac",
+    "departamento": "Apurímac"
+  },
+  {
+    "id": 32,
+    "universidad": "Universidad Nacional Intercultural de la Amazonía",
+    "departamento": "Ucayali"
+  },
+  {
+    "id": 33,
+    "universidad": "Universidad Nacional Tecnológica de Lima Sur",
+    "departamento": "Lima"
+  },
+  {
+    "id": 34,
+    "universidad": "Universidad Nacional José María Arguedas",
+    "departamento": "Apurímac"
+  },
+  {
+    "id": 35,
+    "universidad": "Universidad Nacional de Moquegua",
+    "departamento": "Moquegua"
+  },
+  {
+    "id": 36,
+    "universidad": "Universidad Nacional de Juliaca",
+    "departamento": "Puno"
+  },
+  {
+    "id": 37,
+    "universidad": "Universidad Nacional de Jaén",
+    "departamento": "Cajamarca"
+  },
+  {
+    "id": 38,
+    "universidad": "Universidad Nacional de Frontera",
+    "departamento": "Piura"
+  },
+  {
+    "id": 39,
+    "universidad": "Universidad Nacional Autónoma de Chota",
+    "departamento": "Cajamarca"
+  },
+  {
+    "id": 40,
+    "universidad": "Universidad Nacional de Barranca",
+    "departamento": "Lima"
+  },
+  {
+    "id": 41,
+    "universidad": "Universidad Nacional de Cañete",
+    "departamento": "Lima"
+  },
+  {
+    "id": 42,
+    "universidad": "Universidad Nacional Intercultural Fabiola Salazar Leguía de Bagua",
+    "departamento": "Amazonas"
+  },
+  {
+    "id": 43,
+    "universidad": "Universidad Nacional Intercultural de la Selva Central Juan Santos Atahualpa",
+    "departamento": "Junín"
+  },
+  {
+    "id": 44,
+    "universidad": "Universidad Nacional Intercultural de Quillabamba",
+    "departamento": "Cusco"
+  },
+  {
+    "id": 45,
+    "universidad": "Universidad Nacional Autónoma de Alto Amazonas",
+    "departamento": "Loreto"
+  },
+  {
+    "id": 46,
+    "universidad": "Universidad Nacional Autónoma Altoandina de Tarma",
+    "departamento": "Junín"
+  },
+  {
+    "id": 47,
+    "universidad": "Universidad Nacional Autónoma de Huanta",
+    "departamento": "Ayacucho"
+  },
+  {
+    "id": 48,
+    "universidad": "Universidad Nacional Tecnológica de Lima Sur",
+    "departamento": "Lima"
+  },
+  {
+    "id": 49,
+    "universidad": "Universidad Nacional Autónoma de Tayacaja Daniel Hernández Morillo",
+    "departamento": "Huancavelica"
+  },
+  {
+    "id": 50,
+    "universidad": "Universidad Nacional Ciro Alegría",
+    "departamento": "La Libertad"
+  },
+  {
+    "id": 51,
+    "universidad": "Pontificia Universidad Católica del Perú",
+    "departamento": "Lima"
+  },
+  {
+    "id": 52,
+    "universidad": "Universidad Peruana Cayetano Heredia",
+    "departamento": "Lima"
+  },
+  {
+    "id": 53,
+    "universidad": "Universidad Católica de Santa María",
+    "departamento": "Arequipa"
+  },
+  {
+    "id": 54,
+    "universidad": "Universidad del Pacífico",
+    "departamento": "Lima"
+  },
+  {
+    "id": 55,
+    "universidad": "Universidad de Lima",
+    "departamento": "Lima"
+  },
+  {
+    "id": 56,
+    "universidad": "Universidad de San Martín de Porres",
+    "departamento": "Lima"
+  },
+  {
+    "id": 57,
+    "universidad": "Universidad Femenina del Sagrado Corazón",
+    "departamento": "Lima"
+  },
+  {
+    "id": 58,
+    "universidad": "Universidad Inca Garcilaso de la Vega",
+    "departamento": "Lima"
+  },
+  {
+    "id": 59,
+    "universidad": "Universidad de Piura",
+    "departamento": "Piura"
+  },
+  {
+    "id": 60,
+    "universidad": "Universidad Ricardo Palma",
+    "departamento": "Lima"
+  },
+  {
+    "id": 61,
+    "universidad": "Universidad Andina Néstor Cáceres Velásquez",
+    "departamento": "Puno"
+  },
+  {
+    "id": 62,
+    "universidad": "Universidad Peruana Los Andes",
+    "departamento": "Junín"
+  },
+  {
+    "id": 63,
+    "universidad": "Universidad Peruana Unión",
+    "departamento": "Lima"
+  },
+  {
+    "id": 64,
+    "universidad": "Universidad Andina del Cusco",
+    "departamento": "Cusco"
+  },
+  {
+    "id": 65,
+    "universidad": "Universidad Tecnológica de los Andes",
+    "departamento": "Apurímac"
+  },
+  {
+    "id": 66,
+    "universidad": "Universidad Privada de Tacna",
+    "departamento": "Tacna"
+  },
+  {
+    "id": 67,
+    "universidad": "Universidad Particular de Chiclayo",
+    "departamento": "Lambayeque"
+  },
+  {
+    "id": 68,
+    "universidad": "Universidad San Pedro",
+    "departamento": "Ancash"
+  },
+  {
+    "id": 69,
+    "universidad": "Universidad Privada Antenor Orrego",
+    "departamento": "La Libertad"
+  },
+  {
+    "id": 70,
+    "universidad": "Universidad de Huánuco",
+    "departamento": "Huánuco"
+  },
+  {
+    "id": 71,
+    "universidad": "Universidad José Carlos Mariátegui",
+    "departamento": "Moquegua"
+  },
+  {
+    "id": 72,
+    "universidad": "Universidad Marcelino Champagnat",
+    "departamento": "Lima"
+  },
+  {
+    "id": 73,
+    "universidad": "Universidad Científica del Perú",
+    "departamento": "Loreto"
+  },
+  {
+    "id": 74,
+    "universidad": "Universidad César Vallejo S.A.C.",
+    "departamento": "La Libertad"
+  },
+  {
+    "id": 75,
+    "universidad": "Universidad Católica Los Ángeles de Chimbote",
+    "departamento": "Ancash"
+  },
+  {
+    "id": 76,
+    "universidad": "Universidad Peruana de Ciencias Aplicadas S.A.C.",
+    "departamento": "Lima"
+  },
+  {
+    "id": 77,
+    "universidad": "Universidad Privada del Norte S.A.C.",
+    "departamento": "La Libertad"
+  },
+  {
+    "id": 78,
+    "universidad": "Universidad San Ignacio de Loyola S.A.",
+    "departamento": "Lima"
+  },
+  {
+    "id": 79,
+    "universidad": "Universidad Alas Peruanas",
+    "departamento": "Lima"
+  },
+  {
+    "id": 80,
+    "universidad": "Universidad Privada Norbert Wiener",
+    "departamento": "Lima"
+  },
+  {
+    "id": 81,
+    "universidad": "Universidad Católica San Pablo",
+    "departamento": "Arequipa"
+  },
+  {
+    "id": 82,
+    "universidad": "Grupo Educativo Universidad Privada de Ica S.A.C.",
+    "departamento": "Ica"
+  },
+  {
+    "id": 83,
+    "universidad": "Universidad Privada San Juan Bautista S.A.C.",
+    "departamento": "Lima"
+  },
+  {
+    "id": 84,
+    "universidad": "Universidad Tecnológica del Perú",
+    "departamento": "Lima"
+  },
+  {
+    "id": 85,
+    "universidad": "Universidad Continental S.A.C.",
+    "departamento": "Junín"
+  },
+  {
+    "id": 86,
+    "universidad": "Universidad Científica del Sur S.A.C.",
+    "departamento": "Lima"
+  },
+  {
+    "id": 87,
+    "universidad": "Universidad Católica Santo Toribio de Mogrovejo",
+    "departamento": "Lambayeque"
+  },
+  {
+    "id": 88,
+    "universidad": "Universidad Privada Antonio Guillermo Urrelo",
+    "departamento": "Cajamarca"
+  },
+  {
+    "id": 89,
+    "universidad": "Universidad Católica Sedes Sapientiae",
+    "departamento": "Lima"
+  },
+  {
+    "id": 90,
+    "universidad": "Universidad Señor de Sipán",
+    "departamento": "Lambayeque"
+  },
+  {
+    "id": 91,
+    "universidad": "Universidad Católica de Trujillo Benedicto XVI",
+    "departamento": "La Libertad"
+  },
+  {
+    "id": 92,
+    "universidad": "Universidad Peruana de las Américas",
+    "departamento": "Lima"
+  },
+  {
+    "id": 93,
+    "universidad": "Universidad ESAN",
+    "departamento": "Lima"
+  },
+  {
+    "id": 94,
+    "universidad": "Universidad Antonio Ruiz de Montoya",
+    "departamento": "Lima"
+  },
+  {
+    "id": 95,
+    "universidad": "Universidad Peruana de Ciencias e Informática",
+    "departamento": "Lima"
+  },
+  {
+    "id": 96,
+    "universidad": "Universidad para el Desarrollo Andino",
+    "departamento": "Huancavelica"
+  },
+  {
+    "id": 97,
+    "universidad": "Universidad Privada Telesup",
+    "departamento": "Lima"
+  },
+  {
+    "id": 98,
+    "universidad": "Universidad Sergio Bernales S.A.",
+    "departamento": "Lima"
+  },
+  {
+    "id": 99,
+    "universidad": "Universidad Privada de Pucallpa S.A.C.",
+    "departamento": "Ucayali"
+  },
+  {
+    "id": 100,
+    "universidad": "Universidad Autónoma de Ica S.A.C.",
+    "departamento": "Ica"
+  },
+  {
+    "id": 101,
+    "universidad": "Universidad Privada de Trujillo",
+    "departamento": "La Libertad"
+  },
+  {
+    "id": 102,
+    "universidad": "Universidad Privada San Carlos",
+    "departamento": "Puno"
+  },
+  {
+    "id": 103,
+    "universidad": "Universidad Peruana Simón Bolivar",
+    "departamento": "Lima"
+  },
+  {
+    "id": 104,
+    "universidad": "Universidad Peruana de Integración Global S.A.C.",
+    "departamento": "Lima"
+  },
+  {
+    "id": 105,
+    "universidad": "Universidad Peruana del Oriente S.A.C.",
+    "departamento": "Loreto"
+  },
+  {
+    "id": 106,
+    "universidad": "Universidad Autónoma del Perú",
+    "departamento": "Lima"
+  },
+  {
+    "id": 107,
+    "universidad": "Universidad de Ciencias y Humanidades",
+    "departamento": "Lima"
+  },
+  {
+    "id": 108,
+    "universidad": "Universidad Privada Juan Mejía Baca",
+    "departamento": "Lambayeque"
+  },
+  {
+    "id": 109,
+    "universidad": "Universidad Jaime Bausate y Meza",
+    "departamento": "Lima"
+  },
+  {
+    "id": 110,
+    "universidad": "Universidad Peruana del Centro",
+    "departamento": "Junín"
+  },
+  {
+    "id": 111,
+    "universidad": "Universidad Privada Arzobispo Loayza S.A.C",
+    "departamento": "Lima"
+  },
+  {
+    "id": 112,
+    "universidad": "Universidad Le Cordon Bleu S.A.C.",
+    "departamento": "Lima"
+  },
+  {
+    "id": 113,
+    "universidad": "Universidad Privada de Huancayo Franklin Roosevelt",
+    "departamento": "Junín"
+  },
+  {
+    "id": 114,
+    "universidad": "Universidad de Lambayeque S.A.C.",
+    "departamento": "Lambayeque"
+  },
+  {
+    "id": 115,
+    "universidad": "Universidad de Ciencias y Artes de América Latina S.A.C.",
+    "departamento": "Lima"
+  },
+  {
+    "id": 116,
+    "universidad": "Universidad Peruana de Arte Orval S.A.C.",
+    "departamento": "Lima"
+  },
+  {
+    "id": 117,
+    "universidad": "Universidad Privada de la Selva Peruana",
+    "departamento": "Loreto"
+  },
+  {
+    "id": 118,
+    "universidad": "Universidad Ciencias de la Salud",
+    "departamento": "Arequipa"
+  },
+  {
+    "id": 119,
+    "universidad": "Universidad de Ayacucho Federico Froebel",
+    "departamento": "Ayacucho"
+  },
+  {
+    "id": 120,
+    "universidad": "Universidad Peruana de Investigación y Negocios S.A.C.",
+    "departamento": "Lima"
+  },
+  {
+    "id": 121,
+    "universidad": "Universidad Peruana Austral del Cusco",
+    "departamento": "Cusco"
+  },
+  {
+    "id": 122,
+    "universidad": "Universidad Autónoma San Francisco",
+    "departamento": "Arequipa"
+  },
+  {
+    "id": 123,
+    "universidad": "Universidad San Andrés",
+    "departamento": "Lima"
+  },
+  {
+    "id": 124,
+    "universidad": "Universidad Interamericana para el Desarrollo",
+    "departamento": "Lima"
+  },
+  {
+    "id": 125,
+    "universidad": "Universidad Privada Juan Pablo II",
+    "departamento": "Lima"
+  },
+  {
+    "id": 126,
+    "universidad": "Universidad Privada Leonardo Da Vinci S.A.C.",
+    "departamento": "La Libertad"
+  },
+  {
+    "id": 127,
+    "universidad": "Universidad de Ingeniería y Tecnología",
+    "departamento": "Lima"
+  },
+  {
+    "id": 128,
+    "universidad": "Universidad La Salle",
+    "departamento": "Arequipa"
+  },
+  {
+    "id": 129,
+    "universidad": "Universidad Latinoamericana CIMA",
+    "departamento": "Tacna"
+  },
+  {
+    "id": 130,
+    "universidad": "Universidad Privada Autónoma del Sur",
+    "departamento": "Arequipa"
+  },
+  {
+    "id": 131,
+    "universidad": "Universidad María Auxiliadora",
+    "departamento": "Lima"
+  },
+  {
+    "id": 132,
+    "universidad": "Universidad Politécnica Amazónica S.A.C.",
+    "departamento": "Amazonas"
+  },
+  {
+    "id": 133,
+    "universidad": "Universidad Santo Domingo de Guzmán",
+    "departamento": "Lima"
+  },
+  {
+    "id": 134,
+    "universidad": "Universidad Marítima del Perú",
+    "departamento": "Callao"
+  },
+  {
+    "id": 135,
+    "universidad": "Universidad Privada Líder Peruana",
+    "departamento": "Cusco"
+  },
+  {
+    "id": 136,
+    "universidad": "Universidad Privada Peruano Alemana S.AC.",
+    "departamento": "Lima"
+  },
+  {
+    "id": 137,
+    "universidad": "Universidad Global del Cusco",
+    "departamento": "Cusco"
+  },
+  {
+    "id": 138,
+    "universidad": "Universidad Santo Tomás de Aquino de Ciencia e Integración",
+    "departamento": "Junín"
+  },
+  {
+    "id": 139,
+    "universidad": "Universidad Privada SISE",
+    "departamento": "Lima"
+  },
+  {
+    "id": 140,
+    "universidad": "Universidad Seminario Evangélico de Lima",
+    "departamento": "Lima"
+  },
+  {
+    "id": 141,
+    "universidad": "Universidad Seminario Bíblico Andino",
+    "departamento": "Lima"
+  },
+  {
+    "id": 142,
+    "universidad": "Universidad Católica San José",
+    "departamento": "Lima"
+  }
+]

@@ -1,0 +1,20 @@
+.hoverColor:hover {
+  color: #f6ca29;
+  cursor: pointer;
+}
+
+.footerOne {
+}
+
+.containerFooter {
+}
+@media (max-width: 899px) {
+  .containerFooter {
+    block-size: 630px;
+  }
+
+  .footerOne {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+  }
+}
