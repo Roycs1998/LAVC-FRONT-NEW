@@ -1,5 +1,3 @@
-import { Box } from '@mui/material'
-
 import { CardImage } from '@/components/components-home/components-ponentes/CardImage'
 import { CardExhibitors } from '@/components/components-home/components-sponsors/CardExhibitors'
 
@@ -40,10 +38,6 @@ const Patrocinadores = async () => {
     {
       category: 'A',
       image: 'https://tlavc-peru.org/tlavc/vista/upload/enlaces/suiza-diagnostics-logo.png'
-    },
-    {
-      category: 'A',
-      image: 'https://tlavc-peru.org/tlavc/vista/upload/enlaces/HALLMARK.jpg'
     },
     { category: 'B', image: 'https://tlavc-peru.org/tlavc/vista/upload/enlaces/INVETSA.jpg' },
     {
@@ -162,17 +156,17 @@ const Patrocinadores = async () => {
   ]
 
   return (
-    <Box>
-      <Box>
+    <div>
+      <div>
         <CardImage
           image='https://hospitecnia.com/sites/default/files/2021-01/cabecera-noticia-destacada-patrocinadors-01.jpg'
           title='PATROCINADORES'
         />
-      </Box>
-      <Box>
+      </div>
+      <div>
         <CardExhibitors images={sponsorImages} />
-      </Box>
-    </Box>
+      </div>
+    </div>
   )
 }
 
