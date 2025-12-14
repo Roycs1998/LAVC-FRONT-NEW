@@ -2,9 +2,7 @@ import * as React from 'react'
 
 import Link from 'next/link'
 
-import Card from '@mui/material/Card'
-import CardContent from '@mui/material/CardContent'
-import Typography from '@mui/material/Typography'
+import { Card, CardContent } from '@/components/ui/card'
 
 interface Data {
   icon: React.ReactNode
@@ -14,37 +12,11 @@ interface Data {
 
 export const InformationLetters = ({ icon, qualification, link }: Data) => {
   return (
-    <Link href={link}>
-      <Card
-        sx={{
-          cursor: 'pointer',
-          transition: 'transform 0.3s ease, background-color 0.3s ease',
-          '&:hover': {
-            transform: 'scale(1.05)' // Efecto de hover
-          }
-        }}
-      >
-        <CardContent
-          sx={{
-            width: 357,
-            height: 200,
-            bgcolor: '#153B8B',
-            transition: 'background-color 0.3s ease',
-            '&:hover': {
-              bgcolor: '#244998'
-            },
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center'
-          }}
-        >
-          <Typography sx={{ color: 'var(--letter-color)', textAlign: 'center' }}>{icon}</Typography>
-          <Typography
-            variant='h5'
-            sx={{ color: 'var(--letter-color)', textAlign: 'center', fontWeight: 550, fontSize: 25 }}
-          >
-            {qualification}
-          </Typography>
+    <Link href={link} className='block'>
+      <Card className='group h-[200px] w-[357px] cursor-pointer overflow-hidden rounded-lg border-none bg-transparent shadow-none transition-transform duration-300 ease-out hover:scale-105'>
+        <CardContent className='flex h-full flex-col items-center justify-center space-y-3 bg-[#153B8B] transition-colors duration-300 group-hover:bg-[#244998]'>
+          <div className='text-center text-[var(--letter-color)]'>{icon}</div>
+          <p className='text-center text-[25px] font-semibold leading-tight text-[var(--letter-color)]'>{qualification}</p>
         </CardContent>
       </Card>
     </Link>
