@@ -17,12 +17,12 @@ const Home = async ({ params }: HomeProps) => {
 
   return (
     <main className='relative'>
-      {/* <Carrucel dictionary={dictionary} />
+      <Carrucel dictionary={dictionary} />
       <EventPlace dictionary={dictionary}/>
       <ExtraInformation dictionary={dictionary} />
       <OurEvent dictionary={dictionary} />
       <EventExperience dictionary={dictionary} />
-      <NumberSection dictionary={dictionary} /> */}
+      <NumberSection dictionary={dictionary} />
       <PartnersSection dictionary={dictionary} />
     </main>
   )

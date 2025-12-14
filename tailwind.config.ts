@@ -13,7 +13,6 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // shadcn default tokens
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
