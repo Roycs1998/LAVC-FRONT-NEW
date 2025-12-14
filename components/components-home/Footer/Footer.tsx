@@ -2,130 +2,81 @@
 
 import React from 'react'
 
-import type { TypographyProps } from '@mui/material'
-import { Box, Container, Grid, Button, IconButton, styled, Typography } from '@mui/material'
 import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa'
 
-const FooterWrapper = styled(Box)(({ theme }) => ({
-  backgroundColor: theme.palette.grey[900],
-  color: theme.palette.common.white,
-  padding: theme.spacing(6, 0)
-}))
+import { Button } from '@/components/ui/button'
 
-const FooterColumn = styled(Box)(({ theme }) => ({
-  marginBottom: theme.spacing(3)
-}))
-
-interface FooterLinkProps extends TypographyProps {
-  href?: string
-}
-
-const FooterLink = styled(({ href, ...props }: FooterLinkProps) => <Typography component='a' href={href} {...props} />)(
-  ({ theme }) => ({
-    color: theme.palette.grey[400],
-    textDecoration: 'none',
-    '&:hover': {
-      color: theme.palette.common.white
-    }
-  })
-)
-
-const BottomBanner = styled(Box)(({ theme }) => ({
-  backgroundColor: theme.palette.grey[800],
-  padding: theme.spacing(3),
-  marginTop: theme.spacing(4),
-  textAlign: 'center'
-}))
-
-const SocialIcon = styled(IconButton)(({ theme }) => ({
-  color: theme.palette.common.white,
-  margin: theme.spacing(0, 1)
-}))
+const footerSections = [
+  {
+    title: 'Product',
+    links: [
+      { label: 'Product 1', href: '#' },
+      { label: 'Product 2', href: '#' }
+    ]
+  },
+  {
+    title: 'Use Cases',
+    links: [
+      { label: 'Use Case 1', href: '#' },
+      { label: 'Use Case 2', href: '#' }
+    ]
+  },
+  {
+    title: 'Resources',
+    links: [
+      { label: 'Resource 1', href: '#' },
+      { label: 'Resource 2', href: '#' }
+    ]
+  },
+  {
+    title: 'Company',
+    links: [
+      { label: 'About Us', href: '#' },
+      { label: 'Contact Us', href: '#' }
+    ]
+  }
+]
 
 export const Footer = () => {
   return (
-    <FooterWrapper component='footer'>
-      <Container maxWidth='lg'>
-        <Grid container spacing={4}>
-          <Grid item xs={12} sm={6} md={3}>
-            <FooterColumn>
-              <Typography variant='h6' gutterBottom>
-                Product
-              </Typography>
-              <FooterLink variant='body2' component='a' href='#'>
-                Product 1
-              </FooterLink>
-              <FooterLink variant='body2' component='a' href='#' display='block'>
-                Product 2
-              </FooterLink>
-            </FooterColumn>
-          </Grid>
-          <Grid item xs={12} sm={6} md={3}>
-            <FooterColumn>
-              <Typography variant='h6' gutterBottom>
-                Use Cases
-              </Typography>
-              <FooterLink variant='body2' component='a' href='#'>
-                Use Case 1
-              </FooterLink>
-              <FooterLink variant='body2' component='a' href='#' display='block'>
-                Use Case 2
-              </FooterLink>
-            </FooterColumn>
-          </Grid>
-          <Grid item xs={12} sm={6} md={3}>
-            <FooterColumn>
-              <Typography variant='h6' gutterBottom>
-                Resources
-              </Typography>
-              <FooterLink variant='body2' component='a' href='#'>
-                Resource 1
-              </FooterLink>
-              <FooterLink variant='body2' component='a' href='#' display='block'>
-                Resource 2
-              </FooterLink>
-            </FooterColumn>
-          </Grid>
-          <Grid item xs={12} sm={6} md={3}>
-            <FooterColumn>
-              <Typography variant='h6' gutterBottom>
-                Company
-              </Typography>
-              <FooterLink variant='body2' component='a' href='#'>
-                About Us
-              </FooterLink>
-              <FooterLink variant='body2' component='a' href='#' display='block'>
-                Contact Us
-              </FooterLink>
-            </FooterColumn>
-          </Grid>
-        </Grid>
-        <BottomBanner>
-          <Typography variant='h6' gutterBottom>
-            HAVE GOOD WEB DESIGN TODAY
-          </Typography>
-          <Typography variant='body2' gutterBottom>
-            A brief description goes here
-          </Typography>
-          <Button variant='contained' color='primary' sx={{ mt: 2, mb: 3 }}>
-            Get Started
-          </Button>
-          <Box>
-            <SocialIcon aria-label='Facebook'>
-              <FaFacebook />
-            </SocialIcon>
-            <SocialIcon aria-label='Twitter'>
-              <FaTwitter />
-            </SocialIcon>
-            <SocialIcon aria-label='Instagram'>
-              <FaInstagram />
-            </SocialIcon>
-          </Box>
-          <Typography variant='body2' sx={{ mt: 2 }}>
-            © 2023 Your Company. All rights reserved.
-          </Typography>
-        </BottomBanner>
-      </Container>
-    </FooterWrapper>
+    <footer className='bg-gray-900 text-white'>
+      <div className='mx-auto max-w-6xl px-4 py-12'>
+        <div className='grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4'>
+          {footerSections.map(section => (
+            <div key={section.title} className='space-y-3'>
+              <h3 className='text-lg font-semibold'>{section.title}</h3>
+              <div className='space-y-2 text-gray-400'>
+                {section.links.map(link => (
+                  <a key={link.label} href={link.href} className='block text-sm transition-colors hover:text-white'>
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className='mt-10 space-y-4 rounded-lg bg-gray-800 px-6 py-8 text-center'>
+          <h4 className='text-xl font-semibold tracking-wide'>HAVE GOOD WEB DESIGN TODAY</h4>
+          <p className='text-sm text-gray-300'>A brief description goes here</p>
+          <Button className='mt-2 mb-4 bg-primary text-white hover:bg-primary/90'>Get Started</Button>
+
+          <div className='flex justify-center space-x-3 text-lg'>
+            {[FaFacebook, FaTwitter, FaInstagram].map((Icon, index) => (
+              <button
+                key={index}
+                type='button'
+                className='rounded-full p-2 text-white transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary'
+                aria-label={`Red social ${index + 1}`}
+              >
+                <Icon />
+              </button>
+            ))}
+          </div>
+
+          <p className='text-sm text-gray-300'>© 2023 Your Company. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
   )
 }

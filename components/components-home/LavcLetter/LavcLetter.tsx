@@ -2,7 +2,9 @@ import * as React from 'react'
 
 import Link from 'next/link'
 
-import { Button, Card, CardContent, CardMedia, Grid, Typography } from '@mui/material'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent } from '@/components/ui/card'
+import { cn } from '@/lib/utils'
 
 // Definimos el tipo de datos que vamos a recibir
 interface Data {
@@ -20,67 +22,40 @@ interface InformationList {
 
 export const LavcLetter = ({ nameButton, title, information }: InformationList) => {
   return (
-    <Card sx={{ maxWidth: '100%', boxShadow: '1', bgcolor: 'var(--color-card-background)' }}>
-      <Typography
-        variant='h5'
-        sx={{
-          fontWeight: 700,
-          margin: '4px',
-          bgcolor: '#153B8B',
-          color: '#f0f1f3',
-          height: 40,
-          textAlign: 'center',
-          lineHeight: '40px',
-          marginTop: 2,
-          width: '100%',
-          borderTopLeftRadius: '15px' // Redondea solo la esquina superior izquierda
-        }}
-      >
+    <Card className='w-full overflow-hidden border shadow-sm bg-[var(--color-card-background)]'>
+      <div className='mt-2 w-full rounded-tl-[15px] bg-[#153B8B] px-2 py-1 text-center text-lg font-bold text-[#f0f1f3]'>
         {title}
-      </Typography>
-      <CardContent sx={{ padding: 2 }}>
-        <Grid container spacing={1}>
-          {/* Mapeamos la lista de elementos */}
-          {information.map((item, index) => (
-            <Grid container item xs={12} spacing={2} key={index}>
-              {/* Primera columna: Imagen */}
-              <Grid item xs={6} sx={{ height: 195 }}>
-                <CardMedia
-                  component='img'
-                  image={item.image}
-                  alt={`Imagen ${index}`}
-                  sx={{ height: '100%', width: '100%', objectFit: 'contain' }}
-                />
-              </Grid>
-              {/* Segunda columna: Título y descripción */}
-              <Grid item xs={5}>
-                <Typography variant='h6' sx={{ fontWeight: 700, marginTop: 2, color: '#153B8B' }}>
-                  {item.name}
-                </Typography>
-                <Typography variant='body1' sx={{ marginTop: 2.5 }}>
-                  Nov 11 - 12, 2024
-                </Typography>
-                <Typography variant='body2' sx={{ color: 'text.secondary', marginTop: 3.5 }}>
-                  <Link href={item.link}>
-                    <Button
-                      variant='contained'
-                      sx={{
-                        height: 50,
-                        width: '80%',
-                        fontWeight: 700,
-                        bgcolor: '#153B8B',
-                        fontSize: 15,
-                        borderRadius: '15px'
-                      }}
-                    >
-                      {nameButton}
-                    </Button>
-                  </Link>
-                </Typography>
-              </Grid>
-            </Grid>
-          ))}
-        </Grid>
+      </div>
+      <CardContent className='space-y-4 p-4'>
+        {information.map((item, index) => (
+          <div
+            key={index}
+            className='grid grid-cols-1 gap-4 border-b border-muted-foreground/10 pb-4 last:border-b-0 last:pb-0 md:grid-cols-[1fr_1fr]'
+          >
+            <div className='flex h-[195px] items-center justify-center'>
+              <img
+                src={item.image}
+                alt={`Imagen ${index}`}
+                className='h-full w-full rounded-md object-contain'
+              />
+            </div>
+
+            <div className='flex flex-col justify-center space-y-3'>
+              <h3 className='text-xl font-bold text-[#153B8B]'>{item.name}</h3>
+              <p className='text-base text-foreground/80'>Nov 11 - 12, 2024</p>
+              <Link href={item.link} className='w-full md:w-4/5'>
+                <Button
+                  className={cn(
+                    'h-12 w-full rounded-[15px] text-base font-semibold uppercase tracking-wide',
+                    'bg-[#153B8B] text-[#f0f1f3] hover:bg-[#0f2e70]'
+                  )}
+                >
+                  {nameButton}
+                </Button>
+              </Link>
+            </div>
+          </div>
+        ))}
       </CardContent>
     </Card>
   )
