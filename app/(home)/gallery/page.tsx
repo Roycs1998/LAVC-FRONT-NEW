@@ -1,22 +1,10 @@
-import { Box } from '@mui/material'
-
 import EventsGallery from './ui/EventsGallery'
 
 const Ponentes = async () => {
-
   return (
-    <>
-    <Box
-      sx={{
-        paddingTop: '3%',
-      }}
-      >
-
+    <div className="pt-12">
       <EventsGallery />
-
-    </Box>
-    </>
-
+    </div>
   )
 }
 
