@@ -2,11 +2,12 @@ import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
 import { i18n } from './components/configs/i18n'
-import { auth } from './lib/auth/config'
+
+export { default } from 'next-auth/middleware'
 
 const STATIC_ASSET_REGEX = /\.(css|js|jpg|jpeg|png|gif|svg|ico|woff|woff2|json|map|mp4|webm|ogg)$/
 
-export default auth(function middleware(req: NextRequest) {
+export function middleware(req: NextRequest) {
   const url = req.nextUrl.clone()
   const pathSegments = url.pathname.split('/').filter(Boolean)
 
@@ -47,7 +48,7 @@ export default auth(function middleware(req: NextRequest) {
   const response = NextResponse.next()
   response.cookies.set('language', cookieLanguage)
   return response
-})
+}
 
 export const config = {
   matcher: '/:path*'
