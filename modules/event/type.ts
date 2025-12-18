@@ -7,7 +7,6 @@ import {
   EventStatus,
   EventType,
 } from "./contants";
-import { ShortSpeaker } from "@/modules/speaker";
 
 export interface EventVirtualDetails {
   platform?: string;
@@ -53,33 +52,47 @@ export interface EventSettings {
 export interface Event {
   id: string;
   title: string;
-  description?: string;
+  slug: string;
+  description: string;
   shortDescription?: string;
   type: EventType;
   eventStatus: EventStatus;
   startDate: string;
   endDate: string;
-  timezone?: string;
+  timezone: string;
   isAllDay: boolean;
   location: EventLocation;
-  speakers?: ShortSpeaker[];
-  agenda?: EventAgendaItem[];
+  capacity?: number;
+  imageUrl?: string;
+  bannerUrl?: string;
+  company?: ShortCompany;
+  organizer?: {
+    id: string;
+    person: Person;
+  };
   registration: EventRegistration;
-  featuredImage?: string;
-  images?: string[];
-  videoUrl?: string;
+  settings: EventSettings;
+  agenda?: EventAgendaItem[];
+  ticketTypes?: Array<{
+    id: string;
+    name: string;
+    price?: number;
+    currency: string;
+    quantity: number;
+    sold: number;
+  }>;
   tags?: string[];
   categories?: string[];
-  slug?: string;
-  settings?: EventSettings;
   createdAt: string;
-  company?: ShortCompany;
+  updatedAt: string;
+  publishedAt?: string;
+  cancelledAt?: string;
   rejectionReason?: string;
 }
 
 export type CompanyEventStats = {
   eventsByStatus: Partial<Record<keyof typeof EventStatus, number>> &
-    Record<string, number>;
+  Record<string, number>;
   totalEvents: number;
   totalRevenue: number;
   totalTicketsSold: number;

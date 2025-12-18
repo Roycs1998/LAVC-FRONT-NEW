@@ -1,8 +1,7 @@
-import { getServerSession } from "next-auth";
-import { authConfig } from "@/lib/auth/config";
+import { auth } from "@/lib/auth/config";
 
 export async function getTokenFromRequest(): Promise<string | null> {
-  const session = await getServerSession(authConfig);
+  const session = await auth();
 
   const accessToken = (session as any)?.accessToken;
   return accessToken ?? null;

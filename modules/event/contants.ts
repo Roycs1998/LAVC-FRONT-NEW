@@ -34,6 +34,17 @@ export enum AgendaItemType {
   OTHER = "other",
 }
 
+export const EventStatusLabels: Record<EventStatus, string> = {
+  [EventStatus.DRAFT]: "Borrador",
+  [EventStatus.PENDING_APPROVAL]: "Pendiente de Revisión",
+  [EventStatus.APPROVED]: "Aprobado",
+  [EventStatus.REJECTED]: "Rechazado",
+  [EventStatus.PUBLISHED]: "Publicado",
+  [EventStatus.CANCELLED]: "Cancelado",
+  [EventStatus.COMPLETED]: "Completado",
+  [EventStatus.DELETED]: "Eliminado",
+};
+
 export const EventTypeLabels: Record<EventType, string> = {
   [EventType.CONFERENCE]: "Conferencia",
   [EventType.WORKSHOP]: "Workshop",

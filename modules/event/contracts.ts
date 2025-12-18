@@ -1,15 +1,17 @@
 import { Pagination } from "@/modules/common";
 import { EventLocationType, EventStatus, EventType } from "./contants";
 import { Event } from "./type";
+import { CreateTicketTypeRequest } from "../ticket-type";
 
-export type CreateEventRequest = Omit<Event, "id" | "speakers" | "company"> & {
+export type CreateEventRequest = Omit<Event, "id" | "speakers" | "company" | "createdAt" | "updatedAt" | "ticketTypes"> & {
   companyId: string;
   speakers?: string[];
+  ticketTypes?: CreateTicketTypeRequest[];
 };
 
 export type UpdateEventRequest = Partial<CreateEventRequest>;
 
-export interface EventPaginatedResponse extends Pagination<Event> {}
+export type EventPaginatedResponse = Pagination<Event>
 
 export type ChangeEventStatusRequest = {
   eventStatus: EventStatus;

@@ -17,3 +17,29 @@ export interface User {
   person: Person;
   company?: ShortCompany;
 }
+
+export interface OperationalStaffRole {
+  eventId: string;
+  eventTitle: string;
+  eventStartDate: string;
+  eventEndDate: string;
+  participantId: string;
+  role: "operational_staff";
+  canAccess: boolean;
+}
+
+export interface SponsorStaffRole {
+  eventId: string;
+  eventTitle: string;
+  sponsorId: string;
+  sponsorName: string;
+  participantId: string;
+  role: "sponsor_staff";
+  canAccess: boolean;
+}
+
+export interface StaffRolesResponse {
+  hasStaffRoles: boolean;
+  operationalStaff: OperationalStaffRole[];
+  sponsorStaff: SponsorStaffRole[];
+}

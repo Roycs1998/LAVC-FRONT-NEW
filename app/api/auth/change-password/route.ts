@@ -1,11 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getServerSession } from "next-auth";
-import { authConfig } from "@/lib/auth/config";
+import { auth } from "@/lib/auth/config";
 import axios, { AxiosError } from "axios";
 
 export async function PATCH(request: NextRequest) {
   try {
-    const session = await getServerSession(authConfig);
+    const session = await auth();
     const accessToken = (session as any)?.accessToken;
 
     if (!accessToken) {

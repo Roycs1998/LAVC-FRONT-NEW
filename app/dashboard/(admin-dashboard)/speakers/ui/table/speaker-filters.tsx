@@ -1,6 +1,6 @@
 "use client";
 
-import { useSearchParams, useRouter, usePathname } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {
@@ -10,63 +10,76 @@ import {
   SelectContent,
   SelectItem,
 } from "@/components/ui/select";
-import { RotateCcw, Search } from "lucide-react";
-import { useState } from "react";
+import { X } from "lucide-react";
+import useUpdateQueryParams from "@/hooks/use-update-query-params";
+
+type SpeakerFiltersParams = {
+  search: string;
+  entityStatus: string;
+  page: string;
+};
 
 export function SpeakerFilters() {
-  const sp = useSearchParams();
-  const router = useRouter();
-  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const updateParams = useUpdateQueryParams<SpeakerFiltersParams>();
 
-  const [search, setSearch] = useState(sp.get("search") ?? "");
-  const [status, setStatus] = useState(sp.get("status") ?? "");
+  const currentSearch = searchParams.get("search") || "";
+  const currentStatus = searchParams.get("entityStatus") || "all";
 
-  const apply = () => {
-    const p = new URLSearchParams(sp.toString());
-    const setOrDel = (k: string, v?: string) => (v ? p.set(k, v) : p.delete(k));
-
-    setOrDel("search", search || undefined);
-    setOrDel("entityStatus", status || undefined);
-    p.set("page", "1");
-
-    router.replace(`${pathname}?${p.toString()}`);
+  const handleSearchChange = (value: string) => {
+    updateParams({
+      search: value || null,
+      page: value ? "1" : null,
+    });
   };
 
-  const reset = () => {
-    router.replace(`${pathname}`);
+  const handleStatusChange = (value: string) => {
+    updateParams({
+      entityStatus: value === "all" ? null : value,
+      page: "1",
+    });
   };
+
+  const clearFilters = () => {
+    updateParams({
+      search: null,
+      entityStatus: null,
+      page: null,
+    });
+  };
+
+  const hasFilters = currentSearch || currentStatus !== "all";
 
   return (
-    <div className="flex flex-col xl:flex-row justify-between gap-2">
-      <div className="relative w-full xl:max-w-xs">
-        <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
-        <Input
-          placeholder="Nombre, empresa, especialidad…"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="pl-8"
-        />
-      </div>
+    <div className="flex flex-col sm:flex-row gap-4">
+      <Input
+        placeholder="Nombre, empresa, especialidad…"
+        value={currentSearch}
+        onChange={(e) => handleSearchChange(e.target.value)}
+        className="sm:max-w-xs"
+      />
 
-      <div className="grid grid-cols-2 md:flex md:items-end md:justify-end gap-2">
-        <Select value={status} onValueChange={setStatus}>
-          <SelectTrigger>
-            <SelectValue placeholder="Todos" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="active">Activo</SelectItem>
-            <SelectItem value="inactive">Inactivo</SelectItem>
-          </SelectContent>
-        </Select>
+      <Select
+        key={currentStatus}
+        value={currentStatus}
+        onValueChange={handleStatusChange}
+      >
+        <SelectTrigger className="sm:w-[180px]">
+          <SelectValue placeholder="Estado" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="all">Todos los estados</SelectItem>
+          <SelectItem value="active">Activo</SelectItem>
+          <SelectItem value="inactive">Inactivo</SelectItem>
+        </SelectContent>
+      </Select>
 
-        <Button onClick={apply} className="cursor-pointer">
-          Aplicar
+      {hasFilters && (
+        <Button variant="ghost" onClick={clearFilters} className="sm:w-auto">
+          <X className="h-4 w-4 mr-2" />
+          Limpiar filtros
         </Button>
-
-        <Button variant="outline" onClick={reset} className="cursor-pointer">
-          <RotateCcw className="h-4 w-4 mr-1" /> Reset
-        </Button>
-      </div>
+      )}
     </div>
   );
 }

@@ -5,7 +5,16 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Eye, EyeOff, Mail, Lock, User, Phone, Loader2 } from "lucide-react";
+import {
+  Eye,
+  EyeOff,
+  Mail,
+  Lock,
+  User,
+  Phone,
+  Loader2,
+  Ticket,
+} from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -28,10 +37,15 @@ import {
   FormDescription,
 } from "@/components/ui/form";
 import { RegisterFormData, registerSchema } from "@/modules/auth";
+import { InvitationClient } from "@/modules/invitation";
 import { toast } from "sonner";
 import axios, { AxiosError } from "axios";
 
-export function RegisterForm() {
+interface RegisterFormProps {
+  invitationCode?: string;
+}
+
+export function RegisterForm({ invitationCode }: RegisterFormProps) {
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -53,7 +67,6 @@ export function RegisterForm() {
   const {
     control,
     handleSubmit,
-    setError,
     watch,
     formState: { isSubmitting },
   } = form;
@@ -88,24 +101,48 @@ export function RegisterForm() {
 
   const onSubmit = async (data: RegisterFormData) => {
     try {
-      const payload = {
-        email: data.email.trim().toLowerCase(),
-        password: data.password,
-        firstName: data.firstName,
-        lastName: data.lastName,
-        phone: data.phone || undefined,
-      };
+      if (invitationCode) {
+        // Register with invitation
+        const response = await InvitationClient.acceptWithRegistration(
+          invitationCode,
+          {
+            firstName: data.firstName,
+            lastName: data.lastName,
+            email: data.email.trim().toLowerCase(),
+            password: data.password,
+            phone: data.phone || undefined,
+          }
+        );
 
-      await axios.post("/api/auth/register", payload);
+        toast.success("¡Cuenta creada e invitación aceptada!", {
+          description: response.participant
+            ? `Tu cuenta ha sido creada y ahora eres un ${response.participant.participantType}.`
+            : "Tu cuenta ha sido creada y la invitación ha sido aceptada exitosamente.",
+        });
 
-      toast.success("¡Registro exitoso!", {
-        description:
-          "Tu cuenta ha sido creada correctamente. Revisa tu email para verificar tu cuenta.",
-      });
+        // Redirect to login
+        setTimeout(() => router.push("/login"), 1200);
+      } else {
+        // Regular registration
+        const payload = {
+          email: data.email.trim().toLowerCase(),
+          password: data.password,
+          firstName: data.firstName,
+          lastName: data.lastName,
+          phone: data.phone || undefined,
+        };
 
-      setTimeout(() => router.push("/login"), 1200);
+        await axios.post("/api/auth/register", payload);
+
+        toast.success("¡Registro exitoso!", {
+          description:
+            "Tu cuenta ha sido creada correctamente. Revisa tu email para verificar tu cuenta.",
+        });
+
+        setTimeout(() => router.push("/login"), 1200);
+      }
     } catch (error) {
-      const err = error as AxiosError<{ message?: string; errors?: any[] }>;
+      const err = error as AxiosError<{ message?: string; errors?: unknown[] }>;
 
       toast.error("Error en el registro", {
         description:
@@ -125,6 +162,27 @@ export function RegisterForm() {
           <CardDescription className="text-center">
             Completa el formulario para crear tu cuenta
           </CardDescription>
+          {invitationCode && (
+            <div className="space-y-2">
+              <div className="flex items-center gap-2 p-3 bg-primary/10 border border-primary/20 rounded-lg">
+                <Ticket className="h-4 w-4 text-primary" />
+                <p className="text-sm text-primary font-medium">
+                  Registrándote con código de invitación
+                </p>
+              </div>
+              <div className="p-3 bg-muted/50 border rounded-lg">
+                <p className="text-xs text-muted-foreground">
+                  ¿Ya tienes una cuenta?{" "}
+                  <Link
+                    href={`/invite/${invitationCode}`}
+                    className="text-primary hover:underline font-medium"
+                  >
+                    Acepta tu invitación aquí
+                  </Link>
+                </p>
+              </div>
+            </div>
+          )}
         </CardHeader>
 
         <CardContent>

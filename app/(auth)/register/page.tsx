@@ -6,6 +6,13 @@ export const metadata: Metadata = {
   description: "Crea tu cuenta en LAVC Platform",
 };
 
-export default function RegisterPage() {
-  return <RegisterForm />;
+interface RegisterPageProps {
+  searchParams: Promise<{ code?: string }>;
+}
+
+export default async function RegisterPage({
+  searchParams,
+}: RegisterPageProps) {
+  const { code } = await searchParams;
+  return <RegisterForm invitationCode={code} />;
 }
